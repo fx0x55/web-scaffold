@@ -15,47 +15,47 @@ import {
 
 const docSections = [
   {
-    title: '快速开始',
+    title: 'Quick Start',
     icon: <Zap className="h-5 w-5" />,
     items: [
-      { title: '安装指南', href: '#', desc: '5 分钟快速上手' },
-      { title: '项目结构', href: '#', desc: '了解目录组织' },
-      { title: '第一个页面', href: '#', desc: '创建 Hello World' },
+      { title: 'Installation', href: '#', desc: 'Get started in 5 minutes' },
+      { title: 'Project Structure', href: '#', desc: 'Understand directory organization' },
+      { title: 'First Page', href: '#', desc: 'Create Hello World' },
     ],
   },
   {
-    title: '核心概念',
+    title: 'Core Concepts',
     icon: <Book className="h-5 w-5" />,
     items: [
-      { title: '路由系统', href: '#', desc: 'App Router 详解' },
-      { title: '数据获取', href: '#', desc: 'Server & Client 组件' },
-      { title: '样式方案', href: '#', desc: 'Tailwind CSS 配置' },
+      { title: 'Routing', href: '#', desc: 'App Router deep dive' },
+      { title: 'Data Fetching', href: '#', desc: 'Server & Client Components' },
+      { title: 'Styling', href: '#', desc: 'Tailwind CSS configuration' },
     ],
   },
   {
-    title: '组件库',
+    title: 'Components',
     icon: <Layers className="h-5 w-5" />,
     items: [
-      { title: '基础组件', href: '#', desc: 'Button, Input, Card' },
-      { title: '表单组件', href: '#', desc: 'Form, Select, Checkbox' },
-      { title: '布局组件', href: '#', desc: 'Grid, Flex, Container' },
+      { title: 'Basic Components', href: '#', desc: 'Button, Input, Card' },
+      { title: 'Form Components', href: '#', desc: 'Form, Select, Checkbox' },
+      { title: 'Layout Components', href: '#', desc: 'Grid, Flex, Container' },
     ],
   },
   {
-    title: 'API 参考',
+    title: 'API Reference',
     icon: <Code className="h-5 w-5" />,
     items: [
-      { title: '配置选项', href: '#', desc: 'next.config.ts' },
-      { title: 'CLI 命令', href: '#', desc: '所有可用命令' },
-      { title: '类型定义', href: '#', desc: 'TypeScript 类型' },
+      { title: 'Configuration', href: '#', desc: 'next.config.ts' },
+      { title: 'CLI Commands', href: '#', desc: 'All available commands' },
+      { title: 'Type Definitions', href: '#', desc: 'TypeScript types' },
     ],
   },
 ]
 
 const recentUpdates = [
-  { version: 'v2.1.0', date: '2025-04-01', title: '新增深色模式支持' },
-  { version: 'v2.0.0', date: '2025-03-15', title: '升级到 Next.js 16' },
-  { version: 'v1.9.0', date: '2025-02-28', title: '优化构建性能' },
+  { version: 'v2.1.0', date: '2025-04-01', title: 'Added dark mode support' },
+  { version: 'v2.0.0', date: '2025-03-15', title: 'Upgraded to Next.js 16' },
+  { version: 'v1.9.0', date: '2025-02-28', title: 'Improved build performance' },
 ]
 
 export default function DocsPage() {
@@ -87,10 +87,10 @@ export default function DocsPage() {
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="animate-slide-up text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
-              文档中心
+              Documentation
             </h1>
             <p className="animate-slide-up animation-delay-100 mx-auto mt-4 max-w-2xl text-lg text-slate-600 dark:text-slate-400">
-              从入门到精通，全面掌握 Scaffold 的每一个细节
+              Master every detail of Scaffold from beginner to advanced
             </p>
 
             {/* Search Bar with Animation */}
@@ -99,7 +99,7 @@ export default function DocsPage() {
                 <Search className={`absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 transition-colors ${isSearchFocused ? 'text-violet-500' : 'text-slate-400'}`} />
                 <input
                   type="text"
-                  placeholder="搜索文档..."
+                  placeholder="Search documentation..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   onFocus={() => setIsSearchFocused(true)}
@@ -132,7 +132,7 @@ export default function DocsPage() {
                       ))
                     ) : (
                       <div className="px-3 py-4 text-center text-sm text-slate-500">
-                        没有找到相关文档
+                        No documentation found
                       </div>
                     )}
                   </div>
@@ -151,7 +151,7 @@ export default function DocsPage() {
             <div className="sticky top-24 space-y-8">
               <div className="animate-fade-in">
                 <h3 className="mb-4 text-sm font-semibold text-slate-900 dark:text-white">
-                  最近更新
+                  Recent Updates
                 </h3>
                 <div className="space-y-3">
                   {recentUpdates.map((update, index) => (
@@ -230,10 +230,10 @@ export default function DocsPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
-                    找不到需要的文档？
+                    Can't find the documentation you need?
                   </h3>
                   <p className="text-slate-600 dark:text-slate-400">
-                    查看我们的 GitHub 仓库或加入 Discord 社区获取帮助
+                    Check out our GitHub repository or join our Discord community for help
                   </p>
                 </div>
                 <div className="flex gap-3">
@@ -257,10 +257,10 @@ export default function DocsPage() {
             {/* Quick Links */}
             <div className="animate-fade-in animation-delay-500 mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
               {[
-                { title: 'API 文档', icon: <Code className="h-4 w-4" />, href: '/api-demo' },
-                { title: '组件示例', icon: <Layers className="h-4 w-4" />, href: '/features' },
-                { title: '定价', icon: <Zap className="h-4 w-4" />, href: '/pricing' },
-                { title: '关于我们', icon: <Book className="h-4 w-4" />, href: '/about' },
+                { title: 'API Docs', icon: <Code className="h-4 w-4" />, href: '/api-demo' },
+                { title: 'Components', icon: <Layers className="h-4 w-4" />, href: '/features' },
+                { title: 'Pricing', icon: <Zap className="h-4 w-4" />, href: '/pricing' },
+                { title: 'About Us', icon: <Book className="h-4 w-4" />, href: '/about' },
               ].map((link, index) => (
                 <a
                   key={index}

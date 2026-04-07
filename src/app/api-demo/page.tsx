@@ -208,7 +208,7 @@ export default function ApiDemoPage() {
                   ))}
                 </div>
                 <p className="mt-2 text-xs text-slate-500">
-                  <code>omit</code>: 不带 cookies | <code>same-origin</code>: 同域带 cookies | <code>include</code>: 跨域带 cookies (需要服务器支持)
+                  <code>omit</code>: No cookies | <code>same-origin</code>: Send cookies for same-origin | <code>include</code>: Send cookies cross-origin (requires server support)
                 </p>
               </div>
 

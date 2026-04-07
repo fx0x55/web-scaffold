@@ -7,12 +7,12 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 
 const navItems: { href: '/' | '/features' | '/pricing' | '/api-demo' | '/docs' | '/about'; label: string }[] = [
-  { href: '/', label: '首页' },
-  { href: '/features', label: '功能' },
-  { href: '/pricing', label: '价格' },
+  { href: '/', label: 'Home' },
+  { href: '/features', label: 'Features' },
+  { href: '/pricing', label: 'Pricing' },
   { href: '/api-demo', label: 'API' },
-  { href: '/docs', label: '文档' },
-  { href: '/about', label: '关于' },
+  { href: '/docs', label: 'Docs' },
+  { href: '/about', label: 'About' },
 ]
 
 export function Navbar() {
@@ -59,7 +59,7 @@ export function Navbar() {
               size="sm"
               className="rounded-lg bg-gradient-to-r from-violet-600 to-fuchsia-600 font-medium text-white hover:from-violet-700 hover:to-fuchsia-700"
             >
-              开始使用
+              Get Started
             </Button>
           </div>
 
@@ -96,7 +96,7 @@ export function Navbar() {
               ))}
               <div className="mt-2 px-4">
                 <Button className="w-full rounded-lg bg-gradient-to-r from-violet-600 to-fuchsia-600 font-medium text-white">
-                  开始使用
+                  Get Started
                 </Button>
               </div>
             </div>

@@ -6,53 +6,53 @@ import { Button } from '@/components/ui/button'
 
 const plans = [
   {
-    name: '入门版',
-    price: '免费',
+    name: 'Starter',
+    price: 'Free',
     period: '',
-    description: '适合个人项目和学习使用',
+    description: 'Perfect for personal projects and learning',
     features: [
-      '3 个项目',
-      '基础 UI 组件',
-      '社区支持',
-      '1GB 存储空间',
-      '基础分析功能',
+      '3 projects',
+      'Basic UI components',
+      'Community support',
+      '1GB storage',
+      'Basic analytics',
     ],
-    cta: '免费开始',
+    cta: 'Start Free',
     popular: false,
   },
   {
-    name: '专业版',
-    price: '¥99',
-    period: '/月',
-    description: '适合专业开发者和中小团队',
+    name: 'Pro',
+    price: '$15',
+    period: '/month',
+    description: 'For professional developers and small teams',
     features: [
-      '无限项目',
-      '全部 UI 组件',
-      '优先技术支持',
-      '100GB 存储空间',
-      '高级分析功能',
-      '自定义域名',
-      '团队协作',
+      'Unlimited projects',
+      'All UI components',
+      'Priority support',
+      '100GB storage',
+      'Advanced analytics',
+      'Custom domain',
+      'Team collaboration',
     ],
-    cta: '立即升级',
+    cta: 'Upgrade Now',
     popular: true,
   },
   {
-    name: '企业版',
-    price: '定制',
+    name: 'Enterprise',
+    price: 'Custom',
     period: '',
-    description: '适合大型团队和企业级应用',
+    description: 'For large teams and enterprise applications',
     features: [
-      '无限一切',
-      '专属客户经理',
-      'SLA 保障',
-      '无限存储空间',
-      '企业级安全',
-      '私有化部署',
-      'API 访问',
-      '定制开发',
+      'Everything unlimited',
+      'Dedicated account manager',
+      'SLA guarantee',
+      'Unlimited storage',
+      'Enterprise security',
+      'Private deployment',
+      'API access',
+      'Custom development',
     ],
-    cta: '联系销售',
+    cta: 'Contact Sales',
     popular: false,
   },
 ]
@@ -76,19 +76,19 @@ export default function PricingPage() {
           <div className="text-center">
             <span className="animate-fade-in inline-flex items-center gap-2 rounded-full border border-violet-200 bg-violet-50/80 px-4 py-1.5 text-sm font-medium text-violet-700 backdrop-blur-sm dark:border-violet-800 dark:bg-violet-900/20 dark:text-violet-400">
               <Sparkles className="h-4 w-4" />
-              简单透明的定价
+              Simple & Transparent Pricing
             </span>
             <h1 className="animate-slide-up mt-6 text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
-              选择适合你的方案
+              Choose the Right Plan for You
             </h1>
             <p className="animate-slide-up animation-delay-100 mx-auto mt-6 max-w-2xl text-lg text-slate-600 dark:text-slate-400">
-              无论你是个人开发者还是大型企业，我们都有适合你的方案。随时升级或降级，无隐藏费用。
+              Whether you're an individual developer or a large enterprise, we have a plan that fits your needs. Upgrade or downgrade anytime, no hidden fees.
             </p>
 
             {/* Billing Toggle */}
             <div className="animate-slide-up animation-delay-200 mt-8 flex items-center justify-center gap-4">
               <span className={`text-sm font-medium transition-colors ${billingCycle === 'monthly' ? 'text-slate-900 dark:text-white' : 'text-slate-400'}`}>
-                月付
+                Monthly
               </span>
               <button
                 onClick={() => setBillingCycle(billingCycle === 'monthly' ? 'yearly' : 'monthly')}
@@ -101,8 +101,8 @@ export default function PricingPage() {
                 />
               </button>
               <span className={`text-sm font-medium transition-colors ${billingCycle === 'yearly' ? 'text-slate-900 dark:text-white' : 'text-slate-400'}`}>
-                年付
-                <span className="ml-1 text-xs text-emerald-500">省 20%</span>
+                Yearly
+                <span className="ml-1 text-xs text-emerald-500">Save 20%</span>
               </span>
             </div>
           </div>
@@ -126,7 +126,7 @@ export default function PricingPage() {
             >
               {plan.popular && (
                 <div className="absolute -right-12 top-6 rotate-45 bg-gradient-to-r from-violet-600 to-fuchsia-600 px-12 py-1 text-xs font-semibold text-white">
-                  最受欢迎
+                  Most Popular
                 </div>
               )}
 
@@ -160,7 +160,7 @@ export default function PricingPage() {
                 <span className="text-slate-500">{plan.period}</span>
                 {billingCycle === 'yearly' && plan.period && (
                   <p className="mt-1 text-xs text-emerald-500">
-                    年付仅需 ¥{Math.floor(99 * 12 * 0.8)}/年
+                    Yearly only ${Math.floor(15 * 12 * 0.8)}/year
                   </p>
                 )}
               </div>
@@ -201,9 +201,9 @@ export default function PricingPage() {
         {/* Trust Badges */}
         <div className="animate-fade-in animation-delay-700 mt-16 flex flex-wrap items-center justify-center gap-8">
           {[
-            { icon: <Zap className="h-5 w-5" />, text: '即时开通' },
-            { icon: <Check className="h-5 w-5" />, text: '随时取消' },
-            { icon: <Sparkles className="h-5 w-5" />, text: '7天退款保证' },
+            { icon: <Zap className="h-5 w-5" />, text: 'Instant Activation' },
+            { icon: <Check className="h-5 w-5" />, text: 'Cancel Anytime' },
+            { icon: <Sparkles className="h-5 w-5" />, text: '7-Day Money Back' },
           ].map((badge, index) => (
             <div
               key={index}
@@ -218,20 +218,20 @@ export default function PricingPage() {
         {/* FAQ Link */}
         <div className="animate-fade-in animation-delay-800 mt-8 text-center">
           <p className="text-slate-500">
-            还有疑问？{' '}
+            Still have questions?{' '}
             <a
               href="#"
               className="group inline-flex items-center gap-1 font-medium text-violet-600 transition-colors hover:text-violet-500 dark:text-violet-400"
             >
-              查看常见问题
+              View FAQ
               <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
             </a>
-            {' '}或{' '}
+            {' '}or{' '}
             <a
               href="#"
               className="group inline-flex items-center gap-1 font-medium text-violet-600 transition-colors hover:text-violet-500 dark:text-violet-400"
             >
-              联系我们
+              Contact Us
               <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
             </a>
           </p>

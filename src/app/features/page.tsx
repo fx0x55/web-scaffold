@@ -16,59 +16,59 @@ import {
 const features = [
   {
     icon: <Zap className="h-6 w-6" />,
-    title: '极速性能',
-    description: '基于 Next.js 16 和 React Compiler 构建，毫秒级响应速度，支持 Edge 边缘计算部署。',
+    title: 'Lightning Fast',
+    description: 'Built on Next.js 16 with React Compiler, millisecond response times, supports Edge deployment.',
     gradient: 'from-amber-500 to-orange-500',
   },
   {
     icon: <Shield className="h-6 w-6" />,
-    title: '企业级安全',
-    description: '内置 CSRF 保护、XSS 过滤、内容安全策略，通过 SOC2 Type II 认证。',
+    title: 'Enterprise Security',
+    description: 'Built-in CSRF protection, XSS filtering, content security policy, SOC2 Type II certified.',
     gradient: 'from-emerald-500 to-teal-500',
   },
   {
     icon: <Globe className="h-6 w-6" />,
-    title: '全球 CDN',
-    description: '35+ 区域节点覆盖，智能路由优化，确保全球用户都能获得极速体验。',
+    title: 'Global CDN',
+    description: '35+ edge locations worldwide, intelligent routing optimization, ensuring fast experience for global users.',
     gradient: 'from-cyan-500 to-blue-500',
   },
   {
     icon: <BarChart3 className="h-6 w-6" />,
-    title: '实时分析',
-    description: '内置用户行为分析、性能监控、错误追踪，数据实时可视化展示。',
+    title: 'Real-time Analytics',
+    description: 'Built-in user behavior analytics, performance monitoring, error tracking, real-time data visualization.',
     gradient: 'from-violet-500 to-purple-500',
   },
   {
     icon: <Code2 className="h-6 w-6" />,
-    title: 'TypeScript 原生',
-    description: '100% TypeScript 支持，完整的类型定义，智能代码提示和自动补全。',
+    title: 'TypeScript Native',
+    description: '100% TypeScript support, complete type definitions, intelligent code hints and autocompletion.',
     gradient: 'from-blue-500 to-indigo-500',
   },
   {
     icon: <Palette className="h-6 w-6" />,
-    title: '精美 UI 组件',
-    description: '50+ 精心设计的 shadcn/ui 组件，支持深色模式，可高度自定义主题。',
+    title: 'Beautiful UI Components',
+    description: '50+ carefully designed shadcn/ui components, dark mode support, highly customizable themes.',
     gradient: 'from-fuchsia-500 to-pink-500',
   },
   {
     icon: <Workflow className="h-6 w-6" />,
-    title: '自动化工作流',
-    description: 'CI/CD 集成、自动化测试、代码审查，让开发流程更加高效顺畅。',
+    title: 'Automated Workflow',
+    description: 'CI/CD integration, automated testing, code review, making development more efficient.',
     gradient: 'from-rose-500 to-red-500',
   },
   {
     icon: <Rocket className="h-6 w-6" />,
-    title: '一键部署',
-    description: '支持 Vercel、AWS、Azure 等多平台一键部署，从代码到上线只需几分钟。',
+    title: 'One-Click Deploy',
+    description: 'Support one-click deployment to Vercel, AWS, Azure and more platforms, from code to production in minutes.',
     gradient: 'from-emerald-500 to-green-500',
   },
 ]
 
 const stats = [
-  { value: '99.99%', label: '服务可用性' },
-  { value: '<50ms', label: '平均响应时间' },
-  { value: '10M+', label: '日请求处理' },
-  { value: '50+', label: 'UI 组件' },
+  { value: '99.99%', label: 'Uptime' },
+  { value: '<50ms', label: 'Avg Response' },
+  { value: '10M+', label: 'Daily Requests' },
+  { value: '50+', label: 'UI Components' },
 ]
 
 // Animated counter hook
@@ -180,14 +180,14 @@ export default function FeaturesPage() {
           <div className="text-center">
             <span className="animate-fade-in inline-flex items-center gap-2 rounded-full border border-violet-200 bg-violet-50/80 px-4 py-1.5 text-sm font-medium text-violet-700 backdrop-blur-sm dark:border-violet-800 dark:bg-violet-900/20 dark:text-violet-400">
               <Zap className="h-4 w-4" />
-              强大功能
+              Powerful Features
             </span>
             <h1 className="animate-slide-up mt-6 text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">
-              为现代开发而生的
-              <span className="block gradient-text-animated">全套解决方案</span>
+              Complete Solution for
+              <span className="block gradient-text-animated">Modern Development</span>
             </h1>
             <p className="animate-slide-up animation-delay-100 mx-auto mt-6 max-w-2xl text-lg text-slate-600 dark:text-slate-400">
-              从开发到部署，从安全到分析，我们提供构建现代 Web 应用所需的一切功能。
+              Everything you need to build modern web applications, from development to deployment, from security to analytics.
             </p>
           </div>
         </div>
@@ -221,7 +221,7 @@ export default function FeaturesPage() {
                 {feature.description}
               </p>
               <div className="mt-4 flex items-center gap-1 text-sm font-medium text-violet-600 opacity-0 transition-all group-hover:opacity-100 dark:text-violet-400">
-                <span>了解更多</span>
+                <span>Learn More</span>
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </div>
             </div>
@@ -244,17 +244,17 @@ export default function FeaturesPage() {
       <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
         <div className="animate-scale-in rounded-3xl border border-slate-200/50 bg-gradient-to-br from-violet-500/5 via-fuchsia-500/5 to-transparent p-12 text-center dark:border-slate-800/50">
           <h2 className="text-3xl font-bold text-slate-900 dark:text-white">
-            准备好开始了吗？
+            Ready to Get Started?
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-slate-600 dark:text-slate-400">
-            立即体验 Scaffold 带来的开发效率提升
+            Experience the development efficiency boost with Scaffold
           </p>
           <div className="mt-8">
             <a
               href="/pricing"
               className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 px-8 py-3 font-medium text-white transition-all hover:from-violet-700 hover:to-fuchsia-700 hover:shadow-lg hover:shadow-violet-500/25 hover:-translate-y-0.5"
             >
-              查看定价
+              View Pricing
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
           </div>

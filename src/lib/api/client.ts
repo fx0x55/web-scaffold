@@ -9,7 +9,7 @@ export interface ApiClientOptions {
   baseUrl?: string
   headers?: Record<string, string>
   timeout?: number
-  credentials?: 'include' | 'same-origin' | 'omit'  // 新增：可配置的 credentials
+  credentials?: 'include' | 'same-origin' | 'omit'  // New: Configurable credentials
 }
 
 export class ApiClientError extends Error {
@@ -38,7 +38,7 @@ class ApiClient {
       ...options.headers,
     }
     this.timeout = options.timeout || 30000
-    // 默认使用 'same-origin'，跨域时不会自动带 cookies，避免 CORS 问题
+    // Default to 'same-origin', won't auto-send cookies for cross-origin requests to avoid CORS issues
     this.credentials = options.credentials || 'same-origin'
   }
 
@@ -65,7 +65,7 @@ class ApiClient {
     const url = endpoint.startsWith('http') ? endpoint : `${this.baseUrl}${endpoint}`
     const headers = { ...this.defaultHeaders, ...customHeaders }
 
-    // 对于 GET 请求，不设置 Content-Type（简化请求，避免触发预检）
+    // For GET requests, don't set Content-Type (simplify request, avoid triggering preflight)
     if (method === 'GET' || method === 'HEAD') {
       delete headers['Content-Type']
     }
@@ -94,13 +94,13 @@ class ApiClient {
         headers,
         body: requestBody,
         signal: controller.signal,
-        credentials: this.credentials,  // 使用可配置的 credentials
-        mode: 'cors',                   // 显式设置 CORS 模式
+        credentials: this.credentials,  // Use configurable credentials
+        mode: 'cors',                   // Explicitly set CORS mode
       })
 
       clearTimeout(timeoutId)
 
-      // 检查响应类型，避免非 JSON 响应导致错误
+      // Check response type to avoid errors from non-JSON responses
       const contentType = response.headers.get('content-type')
       const isJson = contentType && contentType.includes('application/json')
 
@@ -110,32 +110,32 @@ class ApiClient {
         try {
           rawData = await response.json()
         } catch {
-          // JSON 解析失败，可能是空的响应体
+          // JSON parsing failed, possibly empty response body
           rawData = null
         }
       } else {
-        // 非 JSON 响应，读取为文本
+        // Non-JSON response, read as text
         const text = await response.text()
         if (text) {
-          // 尝试解析为 JSON（某些 API 可能没设置正确的 content-type）
+          // Try to parse as JSON (some APIs may not set correct content-type)
           try {
             rawData = JSON.parse(text)
           } catch {
-            // 确实不是 JSON，包装成对象返回
-            rawData = { _html: text.substring(0, 500) } // 限制长度
+            // Not JSON, wrap in object and return
+            rawData = { _html: text.substring(0, 500) } // Limit length
           }
         } else {
           rawData = null
         }
       }
 
-      // 支持两种响应格式：
-      // 1. 标准格式: { success: true, data: T, error?: {...} }
-      // 2. 直接格式: T (外部 API 直接返回的数据)
+      // Support two response formats:
+      // 1. Standard format: { success: true, data: T, error?: {...} }
+      // 2. Direct format: T (external APIs that return data directly)
       let data: T
 
       if (rawData && typeof rawData === 'object' && 'success' in rawData) {
-        // 标准格式
+        // Standard format
         const apiResponse = rawData as ApiResponse<T>
         if (!response.ok || !apiResponse.success) {
           const error = apiResponse.error || {
@@ -151,7 +151,7 @@ class ApiClient {
         }
         data = apiResponse.data as T
       } else {
-        // 直接格式（外部 API 如 httpbin.org）
+        // Direct format (external APIs like httpbin.org)
         if (!response.ok) {
           throw new ApiClientError(
             `HTTP ${response.status}: ${response.statusText}`,
@@ -175,13 +175,13 @@ class ApiClient {
           throw new ApiClientError('Request timeout', 408, 'TIMEOUT')
         }
 
-        // 检测 CORS 错误
+        // Detect CORS errors
         const errorMsg = error.message.toLowerCase()
         if (
           errorMsg.includes('cors') ||
           errorMsg.includes('cross-origin') ||
           errorMsg.includes('access-control') ||
-          // 当 credentials: include 但服务器不支持时，会出现 Failed to fetch
+          // When credentials: include but server doesn't support it, "Failed to fetch" may occur
           (errorMsg.includes('failed to fetch') && this.credentials === 'include')
         ) {
           throw new ApiClientError(

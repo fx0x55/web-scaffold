@@ -120,6 +120,8 @@ export default function Home() {
   )
 }
 
+import { CheckSquare } from 'lucide-react'
+
 const features = [
   {
     icon: <Zap className="h-5 w-5" />,
@@ -138,6 +140,12 @@ const features = [
     title: 'Beautiful UI',
     description: '50+ shadcn/ui components with Tailwind CSS v4. Dark mode support out of the box.',
     href: '/features',
+  },
+  {
+    icon: <CheckSquare className="h-5 w-5" />,
+    title: 'Todo Demo',
+    description: 'Check out the demo app: Task list, learn how to use components, state management, and styling.',
+    href: '/todo',
   },
 ]
 
