@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import {
-  Sparkles,
   CreditCard,
   TrendingUp,
   Shield,
@@ -15,8 +14,6 @@ import {
   Lock,
   User,
   Bell,
-  Moon,
-  Sun,
   ArrowRight,
   Star,
   BarChart3,
@@ -38,14 +35,9 @@ import {
 } from 'lucide-react'
 
 export default function Home() {
-  const [isDark, setIsDark] = useState(false)
+  const [isDark] = useState(false)
   const [isPlaying, setIsPlaying] = useState(true)
   const gridRef = useRef<HTMLDivElement>(null)
-
-  const toggleTheme = () => {
-    setIsDark(!isDark)
-    document.documentElement.classList.toggle('dark')
-  }
 
   // Spotlight effect handler
   useEffect(() => {
@@ -96,30 +88,8 @@ export default function Home() {
 
       {/* Main Container - Modern Bento Layout */}
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        {/* Header */}
-        <header className="mb-12 flex flex-col gap-8 animate-fade-in">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3 group cursor-pointer">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 shadow-lg shadow-violet-500/25 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
-                <Sparkles className="h-5 w-5 text-white animate-pulse-subtle" />
-              </div>
-              <span className="text-xl font-bold text-slate-900 dark:text-white">
-                Scaffold
-              </span>
-            </div>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleTheme}
-              className="rounded-xl magnetic hover:scale-110 transition-transform">
-              {isDark ? (
-                <Sun className="h-5 w-5" />
-              ) : (
-                <Moon className="h-5 w-5" />
-              )}
-            </Button>
-          </div>
-
+        {/* Hero Section */}
+        <header className="mb-12 flex flex-col gap-8 py-12 animate-fade-in">
           <div className="flex flex-col gap-4">
             <h1 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl animate-slide-up">
               Modern{' '}
@@ -420,7 +390,7 @@ export default function Home() {
               </div>
             </div>
             <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-              "This scaffold has transformed how we build products. The DX is incredible, and the performance gains are real. We've cut our development time in half."
+              &ldquo;This scaffold has transformed how we build products. The DX is incredible, and the performance gains are real. We&apos;ve cut our development time in half.&rdquo;
             </p>
             <div className="mt-4 flex items-center gap-4">
               <div className="flex items-center gap-1 text-xs text-slate-500">
