@@ -9,7 +9,7 @@ export interface ApiClientOptions {
   baseUrl?: string
   headers?: Record<string, string>
   timeout?: number
-  credentials?: 'include' | 'same-origin' | 'omit'  // New: Configurable credentials
+  credentials?: 'include' | 'same-origin' | 'omit' // New: Configurable credentials
 }
 
 export class ApiClientError extends Error {
@@ -17,7 +17,12 @@ export class ApiClientError extends Error {
   public code: string
   public details?: Record<string, unknown>
 
-  constructor(message: string, status: number, code: string, details?: Record<string, unknown>) {
+  constructor(
+    message: string,
+    status: number,
+    code: string,
+    details?: Record<string, unknown>
+  ) {
     super(message)
     this.name = 'ApiClientError'
     this.status = status
@@ -62,7 +67,9 @@ class ApiClient {
     body?: unknown,
     customHeaders?: Record<string, string>
   ): Promise<T> {
-    const url = endpoint.startsWith('http') ? endpoint : `${this.baseUrl}${endpoint}`
+    const url = endpoint.startsWith('http')
+      ? endpoint
+      : `${this.baseUrl}${endpoint}`
     const headers = { ...this.defaultHeaders, ...customHeaders }
 
     // For GET requests, don't set Content-Type (simplify request, avoid triggering preflight)
@@ -94,8 +101,8 @@ class ApiClient {
         headers,
         body: requestBody,
         signal: controller.signal,
-        credentials: this.credentials,  // Use configurable credentials
-        mode: 'cors',                   // Explicitly set CORS mode
+        credentials: this.credentials, // Use configurable credentials
+        mode: 'cors', // Explicitly set CORS mode
       })
 
       clearTimeout(timeoutId)
@@ -182,11 +189,12 @@ class ApiClient {
           errorMsg.includes('cross-origin') ||
           errorMsg.includes('access-control') ||
           // When credentials: include but server doesn't support it, "Failed to fetch" may occur
-          (errorMsg.includes('failed to fetch') && this.credentials === 'include')
+          (errorMsg.includes('failed to fetch') &&
+            this.credentials === 'include')
         ) {
           throw new ApiClientError(
             `CORS error: The server does not allow cross-origin requests with credentials mode '${this.credentials}'. ` +
-            `Try using 'omit' for public APIs, or ensure the server sets proper CORS headers.`,
+              `Try using 'omit' for public APIs, or ensure the server sets proper CORS headers.`,
             0,
             'CORS_ERROR'
           )
@@ -200,23 +208,41 @@ class ApiClient {
   }
 
   // HTTP methods
-  public async get<T>(endpoint: string, headers?: Record<string, string>): Promise<T> {
+  public async get<T>(
+    endpoint: string,
+    headers?: Record<string, string>
+  ): Promise<T> {
     return this.request<T>('GET', endpoint, undefined, headers)
   }
 
-  public async post<T>(endpoint: string, body?: unknown, headers?: Record<string, string>): Promise<T> {
+  public async post<T>(
+    endpoint: string,
+    body?: unknown,
+    headers?: Record<string, string>
+  ): Promise<T> {
     return this.request<T>('POST', endpoint, body, headers)
   }
 
-  public async put<T>(endpoint: string, body?: unknown, headers?: Record<string, string>): Promise<T> {
+  public async put<T>(
+    endpoint: string,
+    body?: unknown,
+    headers?: Record<string, string>
+  ): Promise<T> {
     return this.request<T>('PUT', endpoint, body, headers)
   }
 
-  public async patch<T>(endpoint: string, body?: unknown, headers?: Record<string, string>): Promise<T> {
+  public async patch<T>(
+    endpoint: string,
+    body?: unknown,
+    headers?: Record<string, string>
+  ): Promise<T> {
     return this.request<T>('PATCH', endpoint, body, headers)
   }
 
-  public async delete<T>(endpoint: string, headers?: Record<string, string>): Promise<T> {
+  public async delete<T>(
+    endpoint: string,
+    headers?: Record<string, string>
+  ): Promise<T> {
     return this.request<T>('DELETE', endpoint, undefined, headers)
   }
 }
@@ -236,18 +262,28 @@ function buildUrl(endpoint: string, baseUrl: string): string {
 export const createApi = (baseUrl: string) => ({
   // Users
   users: {
-    list: () => apiClient.get<{ users: unknown[]; meta: { pagination: unknown } }>(buildUrl('/api/users', baseUrl)),
-    get: (id: string) => apiClient.get<unknown>(buildUrl(`/api/users/${id}`, baseUrl)),
+    list: () =>
+      apiClient.get<{ users: unknown[]; meta: { pagination: unknown } }>(
+        buildUrl('/api/users', baseUrl)
+      ),
+    get: (id: string) =>
+      apiClient.get<unknown>(buildUrl(`/api/users/${id}`, baseUrl)),
     create: (data: { name: string; email: string; role?: string }) =>
       apiClient.post<unknown>(buildUrl('/api/users', baseUrl), data),
-    update: (id: string, data: { name?: string; email?: string; role?: string }) =>
-      apiClient.put<unknown>(buildUrl(`/api/users/${id}`, baseUrl), data),
-    delete: (id: string) => apiClient.delete<void>(buildUrl(`/api/users/${id}`, baseUrl)),
+    update: (
+      id: string,
+      data: { name?: string; email?: string; role?: string }
+    ) => apiClient.put<unknown>(buildUrl(`/api/users/${id}`, baseUrl), data),
+    delete: (id: string) =>
+      apiClient.delete<void>(buildUrl(`/api/users/${id}`, baseUrl)),
   },
 
   // Health
   health: {
-    check: () => apiClient.get<{ status: string; timestamp: string; uptime: number }>(buildUrl('/api/health', baseUrl)),
+    check: () =>
+      apiClient.get<{ status: string; timestamp: string; uptime: number }>(
+        buildUrl('/api/health', baseUrl)
+      ),
   },
 })
 

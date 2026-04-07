@@ -53,22 +53,25 @@ export function useApi<T>(
 
     // Only set loading if mounted
     if (mountedRef.current) {
-      setState((prev) => ({ ...prev, loading: true, error: null }))
+      setState(prev => ({ ...prev, loading: true, error: null }))
     }
 
     apiClient
       .get<T>(url)
-      .then((data) => {
+      .then(data => {
         if (mountedRef.current) {
           setState({ data, loading: false, error: null })
         }
       })
-      .catch((error) => {
+      .catch(error => {
         if (mountedRef.current) {
           setState({
             data: null,
             loading: false,
-            error: error instanceof ApiClientError ? error : new ApiClientError('Unknown error', 0, 'UNKNOWN'),
+            error:
+              error instanceof ApiClientError
+                ? error
+                : new ApiClientError('Unknown error', 0, 'UNKNOWN'),
           })
         }
       })
@@ -86,7 +89,7 @@ export function useApi<T>(
   }, [url]) // Re-run when URL changes
 
   const mutate = useCallback((data: T) => {
-    setState((prev) => ({ ...prev, data }))
+    setState(prev => ({ ...prev, data }))
   }, [])
 
   const refetch = useCallback(() => {
@@ -169,7 +172,9 @@ export function useMutation<T = unknown, R = unknown>(
         return result
       } catch (error) {
         const apiError =
-          error instanceof ApiClientError ? error : new ApiClientError('Unknown error', 0, 'UNKNOWN')
+          error instanceof ApiClientError
+            ? error
+            : new ApiClientError('Unknown error', 0, 'UNKNOWN')
         setState({ loading: false, error: apiError, data: null })
         return null
       }
@@ -303,16 +308,21 @@ export function usePaginated<T>(
   }, [baseUrl, credentials])
 
   const url = `${endpoint}?page=${page}&limit=${limit}`
-  const { data, loading, error, refetch: originalRefetch } = useApi<PaginatedResponse<T>>(url)
+  const {
+    data,
+    loading,
+    error,
+    refetch: originalRefetch,
+  } = useApi<PaginatedResponse<T>>(url)
 
   const nextPage = useCallback(() => {
     if (data?.meta.pagination.hasMore) {
-      setPage((p) => p + 1)
+      setPage(p => p + 1)
     }
   }, [data?.meta.pagination.hasMore])
 
   const prevPage = useCallback(() => {
-    setPage((p) => Math.max(1, p - 1))
+    setPage(p => Math.max(1, p - 1))
   }, [])
 
   const goToPage = useCallback((newPage: number) => {

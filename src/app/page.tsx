@@ -1,13 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import {
-  Zap,
-  Shield,
-  Globe,
-  ArrowRight,
-  Sparkles,
-} from 'lucide-react'
+import { Zap, Shield, Globe, ArrowRight, Sparkles } from 'lucide-react'
 import Link from 'next/link'
 
 export default function Home() {
@@ -15,7 +9,7 @@ export default function Home() {
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Background Effects */}
       <div className="fixed inset-0 -z-10">
-        <div className="absolute inset-0 mesh-gradient" />
+        <div className="mesh-gradient absolute inset-0" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(120,119,198,0.12),transparent)]" />
       </div>
 
@@ -36,8 +30,8 @@ export default function Home() {
 
           {/* Subtitle */}
           <p className="animate-slide-up animation-delay-200 mt-6 max-w-2xl text-lg text-slate-600 dark:text-slate-400">
-            Next.js 16 + Tailwind CSS v4 + shadcn/ui. Everything you need to build
-            production-ready web applications.
+            Next.js 16 + Tailwind CSS v4 + shadcn/ui. Everything you need to
+            build production-ready web applications.
           </p>
 
           {/* CTA Buttons */}
@@ -45,8 +39,7 @@ export default function Home() {
             <Link href="/features">
               <Button
                 size="lg"
-                className="group rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 px-8 text-white hover:from-violet-700 hover:to-fuchsia-700 hover:shadow-lg hover:shadow-violet-500/25 hover:-translate-y-0.5 transition-all duration-300"
-              >
+                className="group rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 px-8 text-white transition-all duration-300 hover:-translate-y-0.5 hover:from-violet-700 hover:to-fuchsia-700 hover:shadow-lg hover:shadow-violet-500/25">
                 Explore Features
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
@@ -55,8 +48,7 @@ export default function Home() {
               <Button
                 size="lg"
                 variant="outline"
-                className="rounded-full px-8 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300"
-              >
+                className="rounded-full px-8 transition-all duration-300 hover:bg-slate-100 dark:hover:bg-slate-800">
                 Documentation
               </Button>
             </Link>
@@ -69,10 +61,9 @@ export default function Home() {
             <Link
               key={feature.title}
               href={feature.href}
-              className="group animate-scale-in overflow-hidden rounded-2xl border border-slate-200/60 bg-white/70 p-6 backdrop-blur-xl transition-all duration-300 hover:scale-[1.02] hover:border-violet-300/50 hover:shadow-xl hover:shadow-violet-500/5 dark:border-slate-800/60 dark:bg-slate-900/70 dark:hover:border-violet-700/30"
-              style={{ animationDelay: `${400 + index * 100}ms` }}
-            >
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white shadow-lg shadow-violet-500/20 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+              className="animate-scale-in group overflow-hidden rounded-2xl border border-slate-200/60 bg-white/70 p-6 backdrop-blur-xl transition-all duration-300 hover:scale-[1.02] hover:border-violet-300/50 hover:shadow-xl hover:shadow-violet-500/5 dark:border-slate-800/60 dark:bg-slate-900/70 dark:hover:border-violet-700/30"
+              style={{ animationDelay: `${400 + index * 100}ms` }}>
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white shadow-lg shadow-violet-500/20 transition-transform duration-300 group-hover:rotate-3 group-hover:scale-110">
                 {feature.icon}
               </div>
               <h3 className="mt-4 text-lg font-semibold text-slate-900 dark:text-white">
@@ -95,11 +86,10 @@ export default function Home() {
             Powered by modern technologies
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-8">
-            {techStack.map((tech) => (
+            {techStack.map(tech => (
               <div
                 key={tech.name}
-                className="group flex items-center gap-2 text-slate-400 transition-colors hover:text-slate-600 dark:hover:text-slate-300"
-              >
+                className="group flex items-center gap-2 text-slate-400 transition-colors hover:text-slate-600 dark:hover:text-slate-300">
                 <span className="transition-transform duration-300 group-hover:scale-110">
                   {tech.icon}
                 </span>
@@ -126,25 +116,29 @@ const features = [
   {
     icon: <Zap className="h-5 w-5" />,
     title: 'Lightning Fast',
-    description: 'Next.js 16 with React Compiler enabled for optimal performance. Edge-ready deployment.',
+    description:
+      'Next.js 16 with React Compiler enabled for optimal performance. Edge-ready deployment.',
     href: '/features' as const,
   },
   {
     icon: <Shield className="h-5 w-5" />,
     title: 'Type Safe',
-    description: 'Built with TypeScript in strict mode. Full type safety across your entire application.',
+    description:
+      'Built with TypeScript in strict mode. Full type safety across your entire application.',
     href: '/features' as const,
   },
   {
     icon: <Globe className="h-5 w-5" />,
     title: 'Beautiful UI',
-    description: '50+ shadcn/ui components with Tailwind CSS v4. Dark mode support out of the box.',
+    description:
+      '50+ shadcn/ui components with Tailwind CSS v4. Dark mode support out of the box.',
     href: '/features' as const,
   },
   {
     icon: <CheckSquare className="h-5 w-5" />,
     title: 'Todo Demo',
-    description: 'Check out the demo app: Task list, learn how to use components, state management, and styling.',
+    description:
+      'Check out the demo app: Task list, learn how to use components, state management, and styling.',
     href: '/todo' as const,
   },
 ]

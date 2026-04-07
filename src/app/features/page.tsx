@@ -17,49 +17,57 @@ const features = [
   {
     icon: <Zap className="h-6 w-6" />,
     title: 'Lightning Fast',
-    description: 'Built on Next.js 16 with React Compiler, millisecond response times, supports Edge deployment.',
+    description:
+      'Built on Next.js 16 with React Compiler, millisecond response times, supports Edge deployment.',
     gradient: 'from-amber-500 to-orange-500',
   },
   {
     icon: <Shield className="h-6 w-6" />,
     title: 'Enterprise Security',
-    description: 'Built-in CSRF protection, XSS filtering, content security policy, SOC2 Type II certified.',
+    description:
+      'Built-in CSRF protection, XSS filtering, content security policy, SOC2 Type II certified.',
     gradient: 'from-emerald-500 to-teal-500',
   },
   {
     icon: <Globe className="h-6 w-6" />,
     title: 'Global CDN',
-    description: '35+ edge locations worldwide, intelligent routing optimization, ensuring fast experience for global users.',
+    description:
+      '35+ edge locations worldwide, intelligent routing optimization, ensuring fast experience for global users.',
     gradient: 'from-cyan-500 to-blue-500',
   },
   {
     icon: <BarChart3 className="h-6 w-6" />,
     title: 'Real-time Analytics',
-    description: 'Built-in user behavior analytics, performance monitoring, error tracking, real-time data visualization.',
+    description:
+      'Built-in user behavior analytics, performance monitoring, error tracking, real-time data visualization.',
     gradient: 'from-violet-500 to-purple-500',
   },
   {
     icon: <Code2 className="h-6 w-6" />,
     title: 'TypeScript Native',
-    description: '100% TypeScript support, complete type definitions, intelligent code hints and autocompletion.',
+    description:
+      '100% TypeScript support, complete type definitions, intelligent code hints and autocompletion.',
     gradient: 'from-blue-500 to-indigo-500',
   },
   {
     icon: <Palette className="h-6 w-6" />,
     title: 'Beautiful UI Components',
-    description: '50+ carefully designed shadcn/ui components, dark mode support, highly customizable themes.',
+    description:
+      '50+ carefully designed shadcn/ui components, dark mode support, highly customizable themes.',
     gradient: 'from-fuchsia-500 to-pink-500',
   },
   {
     icon: <Workflow className="h-6 w-6" />,
     title: 'Automated Workflow',
-    description: 'CI/CD integration, automated testing, code review, making development more efficient.',
+    description:
+      'CI/CD integration, automated testing, code review, making development more efficient.',
     gradient: 'from-rose-500 to-red-500',
   },
   {
     icon: <Rocket className="h-6 w-6" />,
     title: 'One-Click Deploy',
-    description: 'Support one-click deployment to Vercel, AWS, Azure and more platforms, from code to production in minutes.',
+    description:
+      'Support one-click deployment to Vercel, AWS, Azure and more platforms, from code to production in minutes.',
     gradient: 'from-emerald-500 to-green-500',
   },
 ]
@@ -72,7 +80,11 @@ const stats = [
 ]
 
 // Animated counter hook
-function useCountUp(end: number, duration: number = 2000, start: boolean = true) {
+function useCountUp(
+  end: number,
+  duration: number = 2000,
+  start: boolean = true
+) {
   const [count, setCount] = useState(0)
   const countRef = useRef(0)
   const startTimeRef = useRef<number | null>(null)
@@ -105,7 +117,15 @@ function useCountUp(end: number, duration: number = 2000, start: boolean = true)
 }
 
 // Stat item with count-up animation
-function StatItem({ value, label, index }: { value: string; label: string; index: number }) {
+function StatItem({
+  value,
+  label,
+  index,
+}: {
+  value: string
+  label: string
+  index: number
+}) {
   const [isVisible, setIsVisible] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
@@ -139,9 +159,8 @@ function StatItem({ value, label, index }: { value: string; label: string; index
   return (
     <div
       ref={ref}
-      className="group relative overflow-hidden rounded-2xl border border-slate-200/50 bg-white/80 p-6 text-center backdrop-blur-xl transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-violet-500/10 dark:border-slate-800/50 dark:bg-slate-900/80 animate-fade-in"
-      style={{ animationDelay: `${index * 100}ms` }}
-    >
+      className="animate-fade-in group relative overflow-hidden rounded-2xl border border-slate-200/50 bg-white/80 p-6 text-center backdrop-blur-xl transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-violet-500/10 dark:border-slate-800/50 dark:bg-slate-900/80"
+      style={{ animationDelay: `${index * 100}ms` }}>
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-violet-500/5 to-fuchsia-500/5 opacity-0 transition-opacity group-hover:opacity-100" />
       <div className="text-3xl font-bold text-slate-900 transition-transform duration-300 group-hover:scale-110 dark:text-white">
         {displayValue}
@@ -156,7 +175,10 @@ export default function FeaturesPage() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const gridRef = useRef<HTMLDivElement>(null)
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, index: number) => {
+  const handleMouseMove = (
+    e: React.MouseEvent<HTMLDivElement>,
+    index: number
+  ) => {
     const rect = e.currentTarget.getBoundingClientRect()
     setMousePosition({
       x: ((e.clientX - rect.left) / rect.width) * 100,
@@ -169,7 +191,7 @@ export default function FeaturesPage() {
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Background */}
       <div className="fixed inset-0 -z-10">
-        <div className="absolute inset-0 mesh-gradient" />
+        <div className="mesh-gradient absolute inset-0" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(120,119,198,0.1),transparent)]" />
       </div>
 
@@ -184,10 +206,13 @@ export default function FeaturesPage() {
             </span>
             <h1 className="animate-slide-up mt-6 text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">
               Complete Solution for
-              <span className="block gradient-text-animated">Modern Development</span>
+              <span className="gradient-text-animated block">
+                Modern Development
+              </span>
             </h1>
             <p className="animate-slide-up animation-delay-100 mx-auto mt-6 max-w-2xl text-lg text-slate-600 dark:text-slate-400">
-              Everything you need to build modern web applications, from development to deployment, from security to analytics.
+              Everything you need to build modern web applications, from
+              development to deployment, from security to analytics.
             </p>
           </div>
         </div>
@@ -199,19 +224,21 @@ export default function FeaturesPage() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="group relative overflow-hidden rounded-3xl border border-slate-200/50 bg-white/80 p-6 backdrop-blur-xl transition-all duration-500 hover:scale-[1.02] hover:shadow-xl dark:border-slate-800/50 dark:bg-slate-900/80 animate-scale-in spotlight-card"
-              style={{
-                animationDelay: `${200 + index * 100}ms`,
-                '--mouse-x': hoveredIndex === index ? `${mousePosition.x}%` : '50%',
-                '--mouse-y': hoveredIndex === index ? `${mousePosition.y}%` : '50%',
-              } as React.CSSProperties}
-              onMouseMove={(e) => handleMouseMove(e, index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
+              className="animate-scale-in spotlight-card group relative overflow-hidden rounded-3xl border border-slate-200/50 bg-white/80 p-6 backdrop-blur-xl transition-all duration-500 hover:scale-[1.02] hover:shadow-xl dark:border-slate-800/50 dark:bg-slate-900/80"
+              style={
+                {
+                  'animationDelay': `${200 + index * 100}ms`,
+                  '--mouse-x':
+                    hoveredIndex === index ? `${mousePosition.x}%` : '50%',
+                  '--mouse-y':
+                    hoveredIndex === index ? `${mousePosition.y}%` : '50%',
+                } as React.CSSProperties
+              }
+              onMouseMove={e => handleMouseMove(e, index)}
+              onMouseLeave={() => setHoveredIndex(null)}>
               <div className="absolute inset-0 -z-10 bg-gradient-to-br from-violet-500/5 to-fuchsia-500/5 opacity-0 transition-opacity group-hover:opacity-100" />
               <div
-                className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${feature.gradient} shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:rotate-3`}
-              >
+                className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${feature.gradient} shadow-lg transition-all duration-300 group-hover:rotate-3 group-hover:scale-110`}>
                 <span className="text-white">{feature.icon}</span>
               </div>
               <h3 className="mt-4 text-lg font-semibold text-slate-900 dark:text-white">
@@ -234,7 +261,12 @@ export default function FeaturesPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {stats.map((stat, index) => (
-              <StatItem key={index} value={stat.value} label={stat.label} index={index} />
+              <StatItem
+                key={index}
+                value={stat.value}
+                label={stat.label}
+                index={index}
+              />
             ))}
           </div>
         </div>
@@ -252,8 +284,7 @@ export default function FeaturesPage() {
           <div className="mt-8">
             <a
               href="/pricing"
-              className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 px-8 py-3 font-medium text-white transition-all hover:from-violet-700 hover:to-fuchsia-700 hover:shadow-lg hover:shadow-violet-500/25 hover:-translate-y-0.5"
-            >
+              className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 px-8 py-3 font-medium text-white transition-all hover:-translate-y-0.5 hover:from-violet-700 hover:to-fuchsia-700 hover:shadow-lg hover:shadow-violet-500/25">
               View Pricing
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>

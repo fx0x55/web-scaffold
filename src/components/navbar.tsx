@@ -6,7 +6,10 @@ import { Sparkles, Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 
-const navItems: { href: '/' | '/features' | '/pricing' | '/api-demo' | '/docs' | '/about'; label: string }[] = [
+const navItems: {
+  href: '/' | '/features' | '/pricing' | '/api-demo' | '/docs' | '/about'
+  label: string
+}[] = [
   { href: '/', label: 'Home' },
   { href: '/features', label: 'Features' },
   { href: '/pricing', label: 'Pricing' },
@@ -24,7 +27,7 @@ export function Navbar() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
+          <Link href="/" className="group flex items-center gap-2">
             <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 shadow-lg shadow-violet-500/25 transition-transform duration-300 group-hover:scale-110">
               <Sparkles className="h-4 w-4 text-white" />
             </div>
@@ -35,7 +38,7 @@ export function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:gap-1">
-            {navItems.map((item) => (
+            {navItems.map(item => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -43,8 +46,7 @@ export function Navbar() {
                   pathname === item.href
                     ? 'text-violet-600 dark:text-violet-400'
                     : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
-                }`}
-              >
+                }`}>
                 {item.label}
                 {pathname === item.href && (
                   <span className="absolute bottom-0 left-1/2 h-0.5 w-4 -translate-x-1/2 rounded-full bg-violet-500" />
@@ -57,8 +59,7 @@ export function Navbar() {
           <div className="hidden md:flex md:items-center md:gap-4">
             <Button
               size="sm"
-              className="rounded-lg bg-gradient-to-r from-violet-600 to-fuchsia-600 font-medium text-white hover:from-violet-700 hover:to-fuchsia-700"
-            >
+              className="rounded-lg bg-gradient-to-r from-violet-600 to-fuchsia-600 font-medium text-white hover:from-violet-700 hover:to-fuchsia-700">
               Get Started
             </Button>
           </div>
@@ -66,8 +67,7 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 dark:border-slate-800 md:hidden"
-          >
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 dark:border-slate-800 md:hidden">
             {mobileMenuOpen ? (
               <X className="h-4 w-4 text-slate-600 dark:text-slate-400" />
             ) : (
@@ -78,9 +78,9 @@ export function Navbar() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="border-t border-slate-200/50 py-4 md:hidden dark:border-slate-800/50">
+          <div className="border-t border-slate-200/50 py-4 dark:border-slate-800/50 md:hidden">
             <div className="flex flex-col gap-1">
-              {navItems.map((item) => (
+              {navItems.map(item => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -89,8 +89,7 @@ export function Navbar() {
                     pathname === item.href
                       ? 'bg-violet-50 text-violet-600 dark:bg-violet-900/20 dark:text-violet-400'
                       : 'text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800/50'
-                  }`}
-                >
+                  }`}>
                   {item.label}
                 </Link>
               ))}

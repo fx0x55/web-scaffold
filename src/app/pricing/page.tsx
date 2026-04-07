@@ -59,13 +59,15 @@ const plans = [
 
 export default function PricingPage() {
   const [hoveredPlan, setHoveredPlan] = useState<number | null>(null)
-  const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly')
+  const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>(
+    'monthly'
+  )
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Background */}
       <div className="fixed inset-0 -z-10">
-        <div className="absolute inset-0 mesh-gradient" />
+        <div className="mesh-gradient absolute inset-0" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(120,119,198,0.1),transparent)]" />
       </div>
 
@@ -82,25 +84,32 @@ export default function PricingPage() {
               Choose the Right Plan for You
             </h1>
             <p className="animate-slide-up animation-delay-100 mx-auto mt-6 max-w-2xl text-lg text-slate-600 dark:text-slate-400">
-              Whether you're an individual developer or a large enterprise, we have a plan that fits your needs. Upgrade or downgrade anytime, no hidden fees.
+              Whether you&apos;re an individual developer or a large enterprise,
+              we have a plan that fits your needs. Upgrade or downgrade anytime,
+              no hidden fees.
             </p>
 
             {/* Billing Toggle */}
             <div className="animate-slide-up animation-delay-200 mt-8 flex items-center justify-center gap-4">
-              <span className={`text-sm font-medium transition-colors ${billingCycle === 'monthly' ? 'text-slate-900 dark:text-white' : 'text-slate-400'}`}>
+              <span
+                className={`text-sm font-medium transition-colors ${billingCycle === 'monthly' ? 'text-slate-900 dark:text-white' : 'text-slate-400'}`}>
                 Monthly
               </span>
               <button
-                onClick={() => setBillingCycle(billingCycle === 'monthly' ? 'yearly' : 'monthly')}
-                className="relative h-7 w-12 rounded-full bg-slate-200 transition-colors dark:bg-slate-700"
-              >
+                onClick={() =>
+                  setBillingCycle(
+                    billingCycle === 'monthly' ? 'yearly' : 'monthly'
+                  )
+                }
+                className="relative h-7 w-12 rounded-full bg-slate-200 transition-colors dark:bg-slate-700">
                 <span
                   className={`absolute top-0.5 h-6 w-6 rounded-full bg-white shadow-md transition-all dark:bg-slate-200 ${
                     billingCycle === 'yearly' ? 'left-[22px]' : 'left-0.5'
                   }`}
                 />
               </button>
-              <span className={`text-sm font-medium transition-colors ${billingCycle === 'yearly' ? 'text-slate-900 dark:text-white' : 'text-slate-400'}`}>
+              <span
+                className={`text-sm font-medium transition-colors ${billingCycle === 'yearly' ? 'text-slate-900 dark:text-white' : 'text-slate-400'}`}>
                 Yearly
                 <span className="ml-1 text-xs text-emerald-500">Save 20%</span>
               </span>
@@ -115,15 +124,14 @@ export default function PricingPage() {
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`group relative overflow-hidden rounded-3xl border bg-white/80 p-8 backdrop-blur-xl transition-all duration-500 hover:scale-[1.02] dark:bg-slate-900/80 animate-scale-in ${
+              className={`animate-scale-in group relative overflow-hidden rounded-3xl border bg-white/80 p-8 backdrop-blur-xl transition-all duration-500 hover:scale-[1.02] dark:bg-slate-900/80 ${
                 plan.popular
                   ? 'border-violet-500 shadow-xl shadow-violet-500/10'
-                  : 'border-slate-200/50 dark:border-slate-800/50 hover:shadow-xl'
+                  : 'border-slate-200/50 hover:shadow-xl dark:border-slate-800/50'
               }`}
               style={{ animationDelay: `${300 + index * 100}ms` }}
               onMouseEnter={() => setHoveredPlan(index)}
-              onMouseLeave={() => setHoveredPlan(null)}
-            >
+              onMouseLeave={() => setHoveredPlan(null)}>
               {plan.popular && (
                 <div className="absolute -right-12 top-6 rotate-45 bg-gradient-to-r from-violet-600 to-fuchsia-600 px-12 py-1 text-xs font-semibold text-white">
                   Most Popular
@@ -150,7 +158,9 @@ export default function PricingPage() {
                 <h3 className="text-xl font-semibold text-slate-900 dark:text-white">
                   {plan.name}
                 </h3>
-                <p className="mt-2 text-sm text-slate-500">{plan.description}</p>
+                <p className="mt-2 text-sm text-slate-500">
+                  {plan.description}
+                </p>
               </div>
 
               <div className="mb-6">
@@ -170,8 +180,7 @@ export default function PricingPage() {
                   plan.popular
                     ? 'bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white hover:from-violet-700 hover:to-fuchsia-700 hover:shadow-lg hover:shadow-violet-500/25'
                     : 'bg-slate-100 text-slate-900 hover:bg-slate-200 dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700'
-                }`}
-              >
+                }`}>
                 {plan.cta}
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
               </Button>
@@ -182,9 +191,11 @@ export default function PricingPage() {
                     key={featureIndex}
                     className="flex items-start gap-3 transition-transform duration-300"
                     style={{
-                      transform: hoveredPlan === index ? `translateX(${featureIndex * 2}px)` : 'translateX(0)',
-                    }}
-                  >
+                      transform:
+                        hoveredPlan === index
+                          ? `translateX(${featureIndex * 2}px)`
+                          : 'translateX(0)',
+                    }}>
                     <div className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-100 transition-transform duration-300 group-hover:scale-110 dark:bg-emerald-900/30">
                       <Check className="h-3 w-3 text-emerald-600 dark:text-emerald-400" />
                     </div>
@@ -203,12 +214,14 @@ export default function PricingPage() {
           {[
             { icon: <Zap className="h-5 w-5" />, text: 'Instant Activation' },
             { icon: <Check className="h-5 w-5" />, text: 'Cancel Anytime' },
-            { icon: <Sparkles className="h-5 w-5" />, text: '7-Day Money Back' },
+            {
+              icon: <Sparkles className="h-5 w-5" />,
+              text: '7-Day Money Back',
+            },
           ].map((badge, index) => (
             <div
               key={index}
-              className="flex items-center gap-2 text-sm text-slate-500 transition-colors hover:text-slate-700 dark:hover:text-slate-300"
-            >
+              className="flex items-center gap-2 text-sm text-slate-500 transition-colors hover:text-slate-700 dark:hover:text-slate-300">
               <span className="text-violet-500">{badge.icon}</span>
               <span>{badge.text}</span>
             </div>
@@ -221,16 +234,14 @@ export default function PricingPage() {
             Still have questions?{' '}
             <a
               href="#"
-              className="group inline-flex items-center gap-1 font-medium text-violet-600 transition-colors hover:text-violet-500 dark:text-violet-400"
-            >
+              className="group inline-flex items-center gap-1 font-medium text-violet-600 transition-colors hover:text-violet-500 dark:text-violet-400">
               View FAQ
               <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
-            </a>
-            {' '}or{' '}
+            </a>{' '}
+            or{' '}
             <a
               href="#"
-              className="group inline-flex items-center gap-1 font-medium text-violet-600 transition-colors hover:text-violet-500 dark:text-violet-400"
-            >
+              className="group inline-flex items-center gap-1 font-medium text-violet-600 transition-colors hover:text-violet-500 dark:text-violet-400">
               Contact Us
               <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
             </a>

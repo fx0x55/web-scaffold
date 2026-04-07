@@ -111,11 +111,17 @@ export function createCorsMiddleware(options: CorsOptions = {}) {
       }
 
       if (opts.methods) {
-        response.headers.set('Access-Control-Allow-Methods', opts.methods.join(','))
+        response.headers.set(
+          'Access-Control-Allow-Methods',
+          opts.methods.join(',')
+        )
       }
 
       if (opts.allowedHeaders) {
-        response.headers.set('Access-Control-Allow-Headers', opts.allowedHeaders.join(','))
+        response.headers.set(
+          'Access-Control-Allow-Headers',
+          opts.allowedHeaders.join(',')
+        )
       }
 
       if (opts.maxAge) {
@@ -134,7 +140,10 @@ export function createCorsMiddleware(options: CorsOptions = {}) {
     }
 
     if (opts.exposedHeaders) {
-      response.headers.set('Access-Control-Expose-Headers', opts.exposedHeaders.join(','))
+      response.headers.set(
+        'Access-Control-Expose-Headers',
+        opts.exposedHeaders.join(',')
+      )
     }
 
     return response
@@ -159,7 +168,9 @@ export const corsPresets = {
         process.env.NEXT_PUBLIC_APP_URL,
         process.env.NEXT_PUBLIC_API_URL,
       ].filter(Boolean)
-      return allowedOrigins.includes(origin) || origin.includes('your-domain.com')
+      return (
+        allowedOrigins.includes(origin) || origin.includes('your-domain.com')
+      )
     },
     credentials: true,
   } as CorsOptions,

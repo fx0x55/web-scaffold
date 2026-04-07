@@ -103,17 +103,14 @@ export const errors = {
   badRequest: (message = 'Bad request', details?: Record<string, unknown>) =>
     error('BAD_REQUEST', message, details),
 
-  unauthorized: (message = 'Unauthorized') =>
-    error('UNAUTHORIZED', message),
+  unauthorized: (message = 'Unauthorized') => error('UNAUTHORIZED', message),
 
-  forbidden: (message = 'Forbidden') =>
-    error('FORBIDDEN', message),
+  forbidden: (message = 'Forbidden') => error('FORBIDDEN', message),
 
   notFound: (resource = 'Resource') =>
     error('NOT_FOUND', `${resource} not found`),
 
-  conflict: (message = 'Resource already exists') =>
-    error('CONFLICT', message),
+  conflict: (message = 'Resource already exists') => error('CONFLICT', message),
 
   validation: (details: Record<string, unknown>) =>
     error('VALIDATION_ERROR', 'Validation failed', details),
@@ -168,8 +165,7 @@ export const apiResponses = {
   created: <T>(data: T, meta?: Partial<ApiMeta>) =>
     jsonResponse(success(data, meta), 201),
 
-  noContent: () =>
-    jsonResponse(noContent(), 204),
+  noContent: () => jsonResponse(noContent(), 204),
 
   // 4xx Client Errors
   badRequest: (message?: string, details?: Record<string, unknown>) =>
@@ -178,14 +174,11 @@ export const apiResponses = {
   unauthorized: (message?: string) =>
     jsonResponse(errors.unauthorized(message), 401),
 
-  forbidden: (message?: string) =>
-    jsonResponse(errors.forbidden(message), 403),
+  forbidden: (message?: string) => jsonResponse(errors.forbidden(message), 403),
 
-  notFound: (resource?: string) =>
-    jsonResponse(errors.notFound(resource), 404),
+  notFound: (resource?: string) => jsonResponse(errors.notFound(resource), 404),
 
-  conflict: (message?: string) =>
-    jsonResponse(errors.conflict(message), 409),
+  conflict: (message?: string) => jsonResponse(errors.conflict(message), 409),
 
   validation: (details: Record<string, unknown>) =>
     jsonResponse(errors.validation(details), 422),
@@ -194,8 +187,7 @@ export const apiResponses = {
     jsonResponse(errors.tooManyRequests(message), 429),
 
   // 5xx Server Errors
-  internal: (message?: string) =>
-    jsonResponse(errors.internal(message), 500),
+  internal: (message?: string) => jsonResponse(errors.internal(message), 500),
 }
 
 // Helper to wrap async handlers with error handling

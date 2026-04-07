@@ -57,7 +57,9 @@ export function validateRequest<T>(
 /**
  * Parse JSON body from request
  */
-export async function parseBody<T = unknown>(request: Request): Promise<T | null> {
+export async function parseBody<T = unknown>(
+  request: Request
+): Promise<T | null> {
   try {
     const text = await request.text()
     if (!text) return null
@@ -89,7 +91,10 @@ export function getPaginationParams(
   defaults: { page?: number; limit?: number } = {}
 ): { page: number; limit: number; offset: number } {
   const page = Math.max(1, parseInt(query.page, 10) || defaults.page || 1)
-  const limit = Math.min(100, Math.max(1, parseInt(query.limit, 10) || defaults.limit || 20))
+  const limit = Math.min(
+    100,
+    Math.max(1, parseInt(query.limit, 10) || defaults.limit || 20)
+  )
   const offset = (page - 1) * limit
 
   return { page, limit, offset }

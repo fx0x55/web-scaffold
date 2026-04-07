@@ -28,38 +28,62 @@ const values = [
   {
     icon: <Target className="h-6 w-6" />,
     title: 'Pursuit of Excellence',
-    description: 'We are never satisfied with mediocrity. Every pixel and line of code strives for perfection.',
+    description:
+      'We are never satisfied with mediocrity. Every pixel and line of code strives for perfection.',
     gradient: 'from-violet-500 to-fuchsia-500',
   },
   {
     icon: <Users className="h-6 w-6" />,
     title: 'User First',
-    description: 'User-centered design, creating products that truly solve real problems.',
+    description:
+      'User-centered design, creating products that truly solve real problems.',
     gradient: 'from-blue-500 to-cyan-500',
   },
   {
     icon: <Heart className="h-6 w-6" />,
     title: 'Driven by Passion',
-    description: 'Passion for technology is our driving force and the soul of our product.',
+    description:
+      'Passion for technology is our driving force and the soul of our product.',
     gradient: 'from-rose-500 to-pink-500',
   },
   {
     icon: <Globe className="h-6 w-6" />,
     title: 'Open & Shared',
-    description: 'Embracing open source, believing collaboration and sharing can make the world better.',
+    description:
+      'Embracing open source, believing collaboration and sharing can make the world better.',
     gradient: 'from-emerald-500 to-teal-500',
   },
 ]
 
 const team = [
-  { name: 'John Smith', role: 'Founder & CEO', avatar: 'from-violet-400 to-fuchsia-400' },
-  { name: 'Mike Johnson', role: 'Tech Lead', avatar: 'from-blue-400 to-cyan-400' },
-  { name: 'Sarah Lee', role: 'Product Designer', avatar: 'from-rose-400 to-pink-400' },
-  { name: 'David Chen', role: 'Full Stack Engineer', avatar: 'from-amber-400 to-orange-400' },
+  {
+    name: 'John Smith',
+    role: 'Founder & CEO',
+    avatar: 'from-violet-400 to-fuchsia-400',
+  },
+  {
+    name: 'Mike Johnson',
+    role: 'Tech Lead',
+    avatar: 'from-blue-400 to-cyan-400',
+  },
+  {
+    name: 'Sarah Lee',
+    role: 'Product Designer',
+    avatar: 'from-rose-400 to-pink-400',
+  },
+  {
+    name: 'David Chen',
+    role: 'Full Stack Engineer',
+    avatar: 'from-amber-400 to-orange-400',
+  },
 ]
 
 // Typewriter effect hook
-function useTypewriter(text: string, speed: number = 50, start: boolean = true) {
+function useTypewriter(
+  text: string,
+  speed: number = 50,
+  start: boolean = true
+) {
   const [displayText, setDisplayText] = useState('')
   const [isComplete, setIsComplete] = useState(false)
 
@@ -117,7 +141,7 @@ export default function AboutPage() {
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Background */}
       <div className="fixed inset-0 -z-10">
-        <div className="absolute inset-0 mesh-gradient" />
+        <div className="mesh-gradient absolute inset-0" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(120,119,198,0.1),transparent)]" />
       </div>
 
@@ -134,21 +158,26 @@ export default function AboutPage() {
               About Scaffold
             </h1>
             <p className="animate-slide-up animation-delay-100 mx-auto mt-6 max-w-2xl text-lg text-slate-600 dark:text-slate-400">
-              We are a passionate team dedicated to making web development simpler, faster, and more enjoyable.
+              We are a passionate team dedicated to making web development
+              simpler, faster, and more enjoyable.
             </p>
           </div>
         </div>
       </div>
 
       {/* Mission Section with Typewriter */}
-      <div ref={missionRef} className="border-y border-slate-200/50 bg-white/50 py-16 dark:border-slate-800/50 dark:bg-slate-900/50">
+      <div
+        ref={missionRef}
+        className="border-y border-slate-200/50 bg-white/50 py-16 dark:border-slate-800/50 dark:bg-slate-900/50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
               Our Mission
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-slate-600 dark:text-slate-400">
-              {missionInView && <TypewriterText text="Scaffold was born from a simple idea: developers should focus on creating, not reinventing the wheel. We believe that excellent tools and frameworks can unleash creativity, enabling everyone to build amazing web applications." />}
+              {missionInView && (
+                <TypewriterText text="Scaffold was born from a simple idea: developers should focus on creating, not reinventing the wheel. We believe that excellent tools and frameworks can unleash creativity, enabling everyone to build amazing web applications." />
+              )}
             </p>
           </div>
         </div>
@@ -183,20 +212,24 @@ export default function AboutPage() {
             {team.map((member, index) => (
               <div
                 key={index}
-                className="group relative overflow-hidden rounded-3xl border border-slate-200/50 bg-white/80 p-6 text-center backdrop-blur-xl transition-all duration-500 hover:scale-[1.03] hover:shadow-xl dark:border-slate-800/50 dark:bg-slate-900/80 animate-scale-in"
+                className="animate-scale-in group relative overflow-hidden rounded-3xl border border-slate-200/50 bg-white/80 p-6 text-center backdrop-blur-xl transition-all duration-500 hover:scale-[1.03] hover:shadow-xl dark:border-slate-800/50 dark:bg-slate-900/80"
                 style={{ animationDelay: `${index * 100}ms` }}
                 onMouseEnter={() => setHoveredTeam(index)}
-                onMouseLeave={() => setHoveredTeam(null)}
-              >
+                onMouseLeave={() => setHoveredTeam(null)}>
                 {/* Animated gradient border on hover */}
-                <div className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-r from-violet-500 via-fuchsia-500 to-violet-500 opacity-0 transition-opacity group-hover:opacity-100" style={{ padding: '1px' }}>
+                <div
+                  className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-r from-violet-500 via-fuchsia-500 to-violet-500 opacity-0 transition-opacity group-hover:opacity-100"
+                  style={{ padding: '1px' }}>
                   <div className="h-full w-full rounded-3xl bg-white dark:bg-slate-900" />
                 </div>
 
                 <div
                   className={`mx-auto h-20 w-20 rounded-full bg-gradient-to-br ${member.avatar} transition-all duration-500 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-violet-500/25`}
                   style={{
-                    transform: hoveredTeam === index ? 'scale(1.1) rotate(5deg)' : 'scale(1) rotate(0deg)',
+                    transform:
+                      hoveredTeam === index
+                        ? 'scale(1.1) rotate(5deg)'
+                        : 'scale(1) rotate(0deg)',
                   }}
                 />
                 <h3 className="mt-4 text-lg font-semibold text-slate-900 transition-colors group-hover:text-violet-600 dark:text-white dark:group-hover:text-violet-400">
@@ -221,7 +254,7 @@ export default function AboutPage() {
 
       {/* Contact Section */}
       <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
-        <div className="animate-scale-in overflow-hidden rounded-3xl bg-gradient-to-br from-violet-500 to-fuchsia-600 p-8 text-center sm:p-12 relative">
+        <div className="animate-scale-in relative overflow-hidden rounded-3xl bg-gradient-to-br from-violet-500 to-fuchsia-600 p-8 text-center sm:p-12">
           {/* Animated background circles */}
           <div className="absolute inset-0 overflow-hidden">
             {[...Array(3)].map((_, i) => (
@@ -245,13 +278,13 @@ export default function AboutPage() {
               Want to Join Us?
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-violet-100">
-              We are always looking for talented people to join our team. If you love technology and are eager to create, welcome to contact us.
+              We are always looking for talented people to join our team. If you
+              love technology and are eager to create, welcome to contact us.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <a
                 href="mailto:hello@scaffold.dev"
-                className="group flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-medium text-violet-600 transition-all hover:bg-violet-50 hover:shadow-lg hover:-translate-y-0.5"
-              >
+                className="group flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-medium text-violet-600 transition-all hover:-translate-y-0.5 hover:bg-violet-50 hover:shadow-lg">
                 <Mail className="h-4 w-4 transition-transform group-hover:scale-110" />
                 hello@scaffold.dev
               </a>
@@ -262,16 +295,23 @@ export default function AboutPage() {
         {/* Social Links */}
         <div className="animate-fade-in animation-delay-200 mt-12 flex items-center justify-center gap-6">
           {[
-            { icon: <GithubIcon className="h-5 w-5" />, href: '#', label: 'GitHub' },
-            { icon: <TwitterIcon className="h-5 w-5" />, href: '#', label: 'Twitter' },
+            {
+              icon: <GithubIcon className="h-5 w-5" />,
+              href: '#',
+              label: 'GitHub',
+            },
+            {
+              icon: <TwitterIcon className="h-5 w-5" />,
+              href: '#',
+              label: 'Twitter',
+            },
             { icon: <Mail className="h-5 w-5" />, href: '#', label: 'Email' },
           ].map((social, index) => (
             <a
               key={index}
               href={social.href}
-              className="group flex h-12 w-12 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 transition-all hover:border-violet-300 hover:text-violet-600 hover:shadow-lg hover:-translate-y-1 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400 dark:hover:border-violet-700 dark:hover:text-violet-400"
-              aria-label={social.label}
-            >
+              className="group flex h-12 w-12 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 transition-all hover:-translate-y-1 hover:border-violet-300 hover:text-violet-600 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400 dark:hover:border-violet-700 dark:hover:text-violet-400"
+              aria-label={social.label}>
               <span className="transition-transform duration-300 group-hover:scale-110">
                 {social.icon}
               </span>
@@ -305,7 +345,13 @@ function TypewriterText({ text }: { text: string }) {
 }
 
 // Value card with hover effects
-function ValueCard({ value, index }: { value: typeof values[0]; index: number }) {
+function ValueCard({
+  value,
+  index,
+}: {
+  value: (typeof values)[0]
+  index: number
+}) {
   const { ref, isInView } = useInView(0.3)
 
   return (
@@ -316,9 +362,9 @@ function ValueCard({ value, index }: { value: typeof values[0]; index: number })
         opacity: isInView ? 1 : 0,
         transform: isInView ? 'translateY(0)' : 'translateY(20px)',
         transition: `opacity 0.6s ease ${index * 100}ms, transform 0.6s ease ${index * 100}ms`,
-      }}
-    >
-      <div className={`mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${value.gradient} text-white shadow-lg shadow-violet-500/25 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6`}>
+      }}>
+      <div
+        className={`mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${value.gradient} text-white shadow-lg shadow-violet-500/25 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110`}>
         {value.icon}
       </div>
       <h3 className="mt-4 text-lg font-semibold text-slate-900 transition-colors group-hover:text-violet-600 dark:text-white dark:group-hover:text-violet-400">

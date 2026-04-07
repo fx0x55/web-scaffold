@@ -1,6 +1,12 @@
 'use client'
 
-import { useState, useCallback, useEffect, useLayoutEffect, useRef } from 'react'
+import {
+  useState,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+} from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { apiClient, useManualApi } from '@/lib/api/client-exports'
@@ -23,10 +29,26 @@ import {
 
 // Example external APIs for demonstration
 const EXAMPLE_APIS = [
-  { name: 'HTTPBin', url: 'https://httpbin.org', desc: 'HTTP Request & Response Service (Recommended for testing)' },
-  { name: 'JSONPlaceholder', url: 'https://jsonplaceholder.typicode.com', desc: 'Free fake API for testing' },
-  { name: 'DummyJSON', url: 'https://dummyjson.com', desc: 'Fake data for testing' },
-  { name: 'Local API', url: 'http://localhost:3000', desc: 'Your local development server' },
+  {
+    name: 'HTTPBin',
+    url: 'https://httpbin.org',
+    desc: 'HTTP Request & Response Service (Recommended for testing)',
+  },
+  {
+    name: 'JSONPlaceholder',
+    url: 'https://jsonplaceholder.typicode.com',
+    desc: 'Free fake API for testing',
+  },
+  {
+    name: 'DummyJSON',
+    url: 'https://dummyjson.com',
+    desc: 'Fake data for testing',
+  },
+  {
+    name: 'Local API',
+    url: 'http://localhost:3000',
+    desc: 'Your local development server',
+  },
 ]
 
 // Typewriter hook
@@ -50,7 +72,7 @@ function useTypewriter(texts: string[], speed: number = 50) {
       } else {
         clearInterval(timer)
         setTimeout(() => {
-          setTextIndex((prev) => (prev + 1) % textsRef.current.length)
+          setTextIndex(prev => (prev + 1) % textsRef.current.length)
         }, 2000)
       }
     }, speed)
@@ -66,15 +88,16 @@ export default function ApiDemoPage() {
   const [customUrl, setCustomUrl] = useState('')
   const [isConfigured, setIsConfigured] = useState(false)
   const [testEndpoint, setTestEndpoint] = useState('/get')
-  const [credentials, setCredentials] = useState<'include' | 'same-origin' | 'omit'>('same-origin')
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null)
+  const [credentials, setCredentials] = useState<
+    'include' | 'same-origin' | 'omit'
+  >('same-origin')
+  const [, setHoveredCard] = useState<number | null>(null)
 
   // Animated typing effect for title
-  const animatedTitle = useTypewriter([
-    'Configure your API',
-    'Test endpoints',
-    'Explore possibilities',
-  ], 60)
+  const animatedTitle = useTypewriter(
+    ['Configure your API', 'Test endpoints', 'Explore possibilities'],
+    60
+  )
 
   // Apply API URL configuration
   const applyConfig = useCallback(() => {
@@ -99,7 +122,7 @@ export default function ApiDemoPage() {
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Background */}
       <div className="fixed inset-0 -z-10">
-        <div className="absolute inset-0 mesh-gradient" />
+        <div className="mesh-gradient absolute inset-0" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(120,119,198,0.12),transparent)]" />
       </div>
 
@@ -115,7 +138,8 @@ export default function ApiDemoPage() {
               <span className="gradient-text-animated">{animatedTitle}</span>
             </h1>
             <p className="animate-slide-up animation-delay-100 mx-auto mt-4 max-w-2xl text-lg text-slate-500 dark:text-slate-400">
-              Configure and test external API endpoints with CORS support. No backend required.
+              Configure and test external API endpoints with CORS support. No
+              backend required.
             </p>
           </div>
         </header>
@@ -127,26 +151,34 @@ export default function ApiDemoPage() {
             className="animate-scale-in group rounded-2xl border border-slate-200/50 bg-white/80 p-6 backdrop-blur-xl transition-all duration-500 hover:shadow-xl dark:border-slate-800/50 dark:bg-slate-900/80"
             style={{ animationDelay: '200ms' }}
             onMouseEnter={() => setHoveredCard(0)}
-            onMouseLeave={() => setHoveredCard(null)}
-          >
+            onMouseLeave={() => setHoveredCard(null)}>
             <div className="mb-6 flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 transition-transform duration-300 group-hover:scale-110">
                 <Globe className="h-5 w-5 text-white" />
               </div>
               <div>
-                <h2 className="font-semibold text-slate-900 dark:text-white">API Configuration</h2>
-                <p className="text-xs text-slate-500">Set your external API base URL</p>
+                <h2 className="font-semibold text-slate-900 dark:text-white">
+                  API Configuration
+                </h2>
+                <p className="text-xs text-slate-500">
+                  Set your external API base URL
+                </p>
               </div>
             </div>
 
             {/* Current Status with pulse effect */}
             <div className="mb-6 rounded-xl bg-slate-50 p-4 transition-colors dark:bg-slate-800/50">
               <div className="mb-2 flex items-center gap-2">
-                <Info className={`h-4 w-4 transition-colors ${isConfigured ? 'text-emerald-500' : 'text-slate-400'}`} />
-                <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Environment Variable</span>
+                <Info
+                  className={`h-4 w-4 transition-colors ${isConfigured ? 'text-emerald-500' : 'text-slate-400'}`}
+                />
+                <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+                  Environment Variable
+                </span>
               </div>
               <code className="break-all text-xs text-slate-500">
-                NEXT_PUBLIC_API_URL={process.env.NEXT_PUBLIC_API_URL || '(not set)'}
+                NEXT_PUBLIC_API_URL=
+                {process.env.NEXT_PUBLIC_API_URL || '(not set)'}
               </code>
             </div>
 
@@ -160,7 +192,7 @@ export default function ApiDemoPage() {
                   <Input
                     placeholder="https://api.example.com"
                     value={customUrl}
-                    onChange={(e) => setCustomUrl(e.target.value)}
+                    onChange={e => setCustomUrl(e.target.value)}
                     className="flex-1 transition-all focus:ring-2 focus:ring-violet-500/20"
                     disabled={isConfigured}
                   />
@@ -168,13 +200,15 @@ export default function ApiDemoPage() {
                     <Button
                       onClick={applyConfig}
                       disabled={!customUrl && !apiUrl}
-                      className="group/btn transition-all hover:shadow-lg hover:shadow-violet-500/25"
-                    >
+                      className="group/btn transition-all hover:shadow-lg hover:shadow-violet-500/25">
                       <LinkIcon className="mr-1 h-4 w-4 transition-transform group-hover/btn:rotate-12" />
                       Connect
                     </Button>
                   ) : (
-                    <Button variant="outline" onClick={resetConfig} className="transition-all hover:bg-rose-50 hover:text-rose-600">
+                    <Button
+                      variant="outline"
+                      onClick={resetConfig}
+                      className="transition-all hover:bg-rose-50 hover:text-rose-600">
                       <RefreshCw className="mr-1 h-4 w-4" />
                       Reset
                     </Button>
@@ -192,7 +226,7 @@ export default function ApiDemoPage() {
                   Credentials Mode
                 </label>
                 <div className="flex gap-2">
-                  {(['omit', 'same-origin', 'include'] as const).map((mode) => (
+                  {(['omit', 'same-origin', 'include'] as const).map(mode => (
                     <button
                       key={mode}
                       onClick={() => setCredentials(mode)}
@@ -201,14 +235,15 @@ export default function ApiDemoPage() {
                         credentials === mode
                           ? 'scale-105 bg-violet-100 text-violet-700 shadow-md dark:bg-violet-900/30 dark:text-violet-300'
                           : 'bg-slate-50 text-slate-600 hover:bg-slate-100 dark:bg-slate-800/50 dark:text-slate-400'
-                      }`}
-                    >
+                      }`}>
                       {mode}
                     </button>
                   ))}
                 </div>
                 <p className="mt-2 text-xs text-slate-500">
-                  <code>omit</code>: No cookies | <code>same-origin</code>: Send cookies for same-origin | <code>include</code>: Send cookies cross-origin (requires server support)
+                  <code>omit</code>: No cookies | <code>same-origin</code>: Send
+                  cookies for same-origin | <code>include</code>: Send cookies
+                  cross-origin (requires server support)
                 </p>
               </div>
 
@@ -236,15 +271,18 @@ export default function ApiDemoPage() {
             className="animate-scale-in group rounded-2xl border border-slate-200/50 bg-white/80 p-6 backdrop-blur-xl transition-all duration-500 hover:shadow-xl dark:border-slate-800/50 dark:bg-slate-900/80"
             style={{ animationDelay: '300ms' }}
             onMouseEnter={() => setHoveredCard(1)}
-            onMouseLeave={() => setHoveredCard(null)}
-          >
+            onMouseLeave={() => setHoveredCard(null)}>
             <div className="mb-6 flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 transition-transform duration-300 group-hover:scale-110">
                 <ExternalLink className="h-5 w-5 text-white" />
               </div>
               <div>
-                <h2 className="font-semibold text-slate-900 dark:text-white">Example APIs</h2>
-                <p className="text-xs text-slate-500">Click to use these test APIs</p>
+                <h2 className="font-semibold text-slate-900 dark:text-white">
+                  Example APIs
+                </h2>
+                <p className="text-xs text-slate-500">
+                  Click to use these test APIs
+                </p>
               </div>
             </div>
 
@@ -262,8 +300,7 @@ export default function ApiDemoPage() {
                     animation: `slide-up 0.3s ease ${index * 50}ms forwards`,
                     opacity: 0,
                     transform: 'translateY(10px)',
-                  }}
-                >
+                  }}>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div className="h-2 w-2 rounded-full bg-emerald-500 transition-transform group-hover/api:scale-125" />
@@ -285,8 +322,9 @@ export default function ApiDemoPage() {
             <div className="mt-4 flex items-start gap-2 rounded-lg bg-amber-50 p-3 dark:bg-amber-900/20">
               <AlertCircle className="mt-0.5 h-4 w-4 text-amber-500" />
               <p className="text-xs text-amber-700 dark:text-amber-400">
-                Note: External APIs must support CORS for browser requests.
-                If you get CORS errors, the API server needs to allow cross-origin requests.
+                Note: External APIs must support CORS for browser requests. If
+                you get CORS errors, the API server needs to allow cross-origin
+                requests.
               </p>
             </div>
           </div>
@@ -296,15 +334,18 @@ export default function ApiDemoPage() {
         {isConfigured && (
           <div
             className="animate-scale-in mt-6 rounded-2xl border border-slate-200/50 bg-white/80 p-6 backdrop-blur-xl dark:border-slate-800/50 dark:bg-slate-900/80"
-            style={{ animationDelay: '400ms' }}
-          >
+            style={{ animationDelay: '400ms' }}>
             <div className="mb-6 flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500">
                 <Code className="h-5 w-5 text-white" />
               </div>
               <div>
-                <h2 className="font-semibold text-slate-900 dark:text-white">API Testing</h2>
-                <p className="text-xs text-slate-500">Test your configured API endpoint</p>
+                <h2 className="font-semibold text-slate-900 dark:text-white">
+                  API Testing
+                </h2>
+                <p className="text-xs text-slate-500">
+                  Test your configured API endpoint
+                </p>
               </div>
             </div>
 
@@ -317,17 +358,22 @@ export default function ApiDemoPage() {
                 <Input
                   placeholder="/get"
                   value={testEndpoint}
-                  onChange={(e) => setTestEndpoint(e.target.value)}
+                  onChange={e => setTestEndpoint(e.target.value)}
                   className="flex-1 font-mono text-sm transition-all focus:ring-2 focus:ring-violet-500/20"
                 />
               </div>
               <p className="mt-2 text-xs text-slate-500">
-                Try: /get, /post, /headers, /ip (for HTTPBin) or /posts, /users (for JSONPlaceholder)
+                Try: /get, /post, /headers, /ip (for HTTPBin) or /posts, /users
+                (for JSONPlaceholder)
               </p>
             </div>
 
             {/* Live Test Component */}
-            <ApiTest baseUrl={apiClient.getBaseUrl()} endpoint={testEndpoint} credentials={credentials} />
+            <ApiTest
+              baseUrl={apiClient.getBaseUrl()}
+              endpoint={testEndpoint}
+              credentials={credentials}
+            />
           </div>
         )}
 
@@ -337,7 +383,9 @@ export default function ApiDemoPage() {
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500">
               <Play className="h-5 w-5 text-white" />
             </div>
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Usage Guide</h2>
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+              Usage Guide
+            </h2>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">
@@ -357,13 +405,14 @@ const data = await apiClient.get('/posts')`,
             ].map((step, index) => (
               <div
                 key={index}
-                className="group rounded-xl border border-slate-200/50 bg-slate-50/50 p-4 transition-all hover:border-violet-300 hover:shadow-md dark:border-slate-800/50 dark:bg-slate-800/50"
-              >
+                className="group rounded-xl border border-slate-200/50 bg-slate-50/50 p-4 transition-all hover:border-violet-300 hover:shadow-md dark:border-slate-800/50 dark:bg-slate-800/50">
                 <div className="mb-2 flex items-center gap-2">
                   <span className="flex h-6 w-6 items-center justify-center rounded-full bg-violet-500 text-xs font-bold text-white">
                     {index + 1}
                   </span>
-                  <h3 className="font-semibold text-slate-900 dark:text-white">{step.title}</h3>
+                  <h3 className="font-semibold text-slate-900 dark:text-white">
+                    {step.title}
+                  </h3>
                 </div>
                 <p className="mb-2 text-sm text-slate-500">{step.desc}</p>
                 <pre className="overflow-x-auto rounded-lg bg-slate-950 p-3 text-xs text-slate-50 transition-shadow group-hover:shadow-inner">
@@ -380,9 +429,25 @@ const data = await apiClient.get('/posts')`,
               Credentials Mode Explained
             </h3>
             <ul className="list-disc space-y-1 pl-5 text-sm text-slate-500">
-              <li><code className="rounded bg-slate-100 px-1 dark:bg-slate-800">omit</code> - Never send cookies (most permissive, works with most APIs)</li>
-              <li><code className="rounded bg-slate-100 px-1 dark:bg-slate-800">same-origin</code> - Only send cookies for same-origin requests (default)</li>
-              <li><code className="rounded bg-slate-100 px-1 dark:bg-slate-800">include</code> - Always send cookies (requires server to set Access-Control-Allow-Credentials: true)</li>
+              <li>
+                <code className="rounded bg-slate-100 px-1 dark:bg-slate-800">
+                  omit
+                </code>{' '}
+                - Never send cookies (most permissive, works with most APIs)
+              </li>
+              <li>
+                <code className="rounded bg-slate-100 px-1 dark:bg-slate-800">
+                  same-origin
+                </code>{' '}
+                - Only send cookies for same-origin requests (default)
+              </li>
+              <li>
+                <code className="rounded bg-slate-100 px-1 dark:bg-slate-800">
+                  include
+                </code>{' '}
+                - Always send cookies (requires server to set
+                Access-Control-Allow-Credentials: true)
+              </li>
             </ul>
           </div>
         </section>
@@ -392,7 +457,15 @@ const data = await apiClient.get('/posts')`,
 }
 
 // API Test Component with animations
-function ApiTest({ baseUrl, endpoint, credentials }: { baseUrl: string; endpoint: string; credentials?: 'include' | 'same-origin' | 'omit' }) {
+function ApiTest({
+  baseUrl,
+  endpoint,
+  credentials,
+}: {
+  baseUrl: string
+  endpoint: string
+  credentials?: 'include' | 'same-origin' | 'omit'
+}) {
   const fullUrl = `${baseUrl.replace(/\/$/, '')}${endpoint.startsWith('/') ? endpoint : `/${endpoint}`}`
   const { data, loading, error, execute } = useManualApi()
   const [responseVisible, setResponseVisible] = useState(false)
@@ -420,7 +493,9 @@ function ApiTest({ baseUrl, endpoint, credentials }: { baseUrl: string; endpoint
       <div className="rounded-xl bg-slate-50 p-4 transition-colors dark:bg-slate-800/50">
         <div className="mb-2 flex items-center gap-2">
           <Server className="h-4 w-4 text-slate-400" />
-          <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Request URL</span>
+          <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+            Request URL
+          </span>
         </div>
         <code className="break-all text-xs text-slate-500">{fullUrl}</code>
       </div>
@@ -431,16 +506,18 @@ function ApiTest({ baseUrl, endpoint, credentials }: { baseUrl: string; endpoint
           onClick={handleSendRequest}
           disabled={loading || !endpoint}
           variant="outline"
-          className="group/btn transition-all hover:border-violet-300 hover:text-violet-600"
-        >
-          <RefreshCw className={`mr-1 h-4 w-4 ${loading ? 'animate-spin' : 'transition-transform group-hover/btn:rotate-180'}`} />
+          className="group/btn transition-all hover:border-violet-300 hover:text-violet-600">
+          <RefreshCw
+            className={`mr-1 h-4 w-4 ${loading ? 'animate-spin' : 'transition-transform group-hover/btn:rotate-180'}`}
+          />
           {loading ? 'Loading...' : 'Send Request'}
         </Button>
       </div>
 
       {/* Response with fade animation */}
       {responseVisible && (
-        <div className={`relative transition-all duration-500 ${data || error ? 'opacity-100' : 'opacity-50'}`}>
+        <div
+          className={`relative transition-all duration-500 ${data || error ? 'opacity-100' : 'opacity-50'}`}>
           <div className="absolute right-2 top-2 flex items-center gap-2">
             {Boolean(data) && (
               <span className="flex animate-bounce items-center gap-1 text-xs text-emerald-500">
@@ -460,18 +537,26 @@ function ApiTest({ baseUrl, endpoint, credentials }: { baseUrl: string; endpoint
             {loading && (
               <span className="flex items-center gap-2">
                 <span className="h-2 w-2 animate-pulse rounded-full bg-violet-500" />
-                <span className="h-2 w-2 animate-pulse rounded-full bg-violet-500 animation-delay-100" />
-                <span className="h-2 w-2 animate-pulse rounded-full bg-violet-500 animation-delay-200" />
+                <span className="animation-delay-100 h-2 w-2 animate-pulse rounded-full bg-violet-500" />
+                <span className="animation-delay-200 h-2 w-2 animate-pulse rounded-full bg-violet-500" />
                 Loading...
               </span>
             )}
-            {error && JSON.stringify({
-              error: error.message,
-              code: error.code,
-              status: error.status,
-            }, null, 2)}
+            {error &&
+              JSON.stringify(
+                {
+                  error: error.message,
+                  code: error.code,
+                  status: error.status,
+                },
+                null,
+                2
+              )}
             {data ? JSON.stringify(data, null, 2) : null}
-            {!loading && !error && !data && 'Click "Send Request" to test the API endpoint'}
+            {!loading &&
+              !error &&
+              !data &&
+              'Click "Send Request" to test the API endpoint'}
           </pre>
         </div>
       )}

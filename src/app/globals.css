@@ -144,7 +144,14 @@
 }
 
 .gradient-text-animated {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #764ba2 75%, #667eea 100%);
+  background: linear-gradient(
+    135deg,
+    #667eea 0%,
+    #764ba2 25%,
+    #f093fb 50%,
+    #764ba2 75%,
+    #667eea 100%
+  );
   background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -153,8 +160,13 @@
 }
 
 @keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 /* Animated mesh gradient background */
@@ -189,7 +201,11 @@
   left: var(--mouse-x, 50%);
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, rgba(120, 119, 198, 0.15) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(120, 119, 198, 0.15) 0%,
+    transparent 70%
+  );
   transform: translate(-50%, -50%);
   pointer-events: none;
   opacity: 0;
@@ -203,7 +219,11 @@
 /* Shimmer border effect */
 .shimmer-border {
   position: relative;
-  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
 }
 
 .shimmer-border::before {
@@ -230,8 +250,13 @@
 }
 
 @keyframes shimmer {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 /* Magnetic button effect base */
@@ -307,26 +332,59 @@
 }
 
 /* Animation Delays */
-.animation-delay-100 { animation-delay: 100ms; }
-.animation-delay-200 { animation-delay: 200ms; }
-.animation-delay-300 { animation-delay: 300ms; }
-.animation-delay-400 { animation-delay: 400ms; }
-.animation-delay-500 { animation-delay: 500ms; }
-.animation-delay-600 { animation-delay: 600ms; }
-.animation-delay-700 { animation-delay: 700ms; }
-.animation-delay-800 { animation-delay: 800ms; }
-.animation-delay-900 { animation-delay: 900ms; }
-.animation-delay-1000 { animation-delay: 1000ms; }
-.animation-delay-1100 { animation-delay: 1100ms; }
-.animation-delay-1200 { animation-delay: 1200ms; }
-.animation-delay-1300 { animation-delay: 1300ms; }
-.animation-delay-1400 { animation-delay: 1400ms; }
-.animation-delay-1500 { animation-delay: 1500ms; }
-.animation-delay-1600 { animation-delay: 1600ms; }
+.animation-delay-100 {
+  animation-delay: 100ms;
+}
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
+.animation-delay-700 {
+  animation-delay: 700ms;
+}
+.animation-delay-800 {
+  animation-delay: 800ms;
+}
+.animation-delay-900 {
+  animation-delay: 900ms;
+}
+.animation-delay-1000 {
+  animation-delay: 1000ms;
+}
+.animation-delay-1100 {
+  animation-delay: 1100ms;
+}
+.animation-delay-1200 {
+  animation-delay: 1200ms;
+}
+.animation-delay-1300 {
+  animation-delay: 1300ms;
+}
+.animation-delay-1400 {
+  animation-delay: 1400ms;
+}
+.animation-delay-1500 {
+  animation-delay: 1500ms;
+}
+.animation-delay-1600 {
+  animation-delay: 1600ms;
+}
 
 /* Floating Animation */
 @keyframes float-slow {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0) translateX(0);
   }
   25% {
@@ -341,7 +399,8 @@
 }
 
 @keyframes float-medium {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0) translateX(0);
   }
   33% {
@@ -353,7 +412,8 @@
 }
 
 @keyframes float-fast {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0) translateX(0);
   }
   50% {
@@ -375,7 +435,8 @@
 
 /* Pulse Dot Animation */
 @keyframes pulse-dot {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.3;
     transform: scale(0.8);
   }
@@ -391,7 +452,8 @@
 
 /* Subtle Pulse */
 @keyframes pulse-subtle {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -405,7 +467,8 @@
 
 /* Slow Pulse */
 @keyframes pulse-slow {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.3;
     transform: scale(1);
   }
@@ -438,7 +501,8 @@
 
 /* Star Pulse Animation */
 @keyframes pulse-star {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }
@@ -468,7 +532,8 @@
 
 /* Bounce Right Animation */
 @keyframes bounce-right {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateX(0);
   }
   50% {
