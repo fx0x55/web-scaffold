@@ -1,81 +1,70 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Guidance for Claude Code when working with this repository.
 
-## Development Commands
+## Commands
 
 ```bash
-# Development server (runs on http://localhost:3000)
-npm run dev
-
-# Production build
-npm run build
-
-# Start production server
-npm run start
-
-# Linting and formatting
-npm run lint          # Run ESLint on src/
-npm run lint:fix      # Fix ESLint issues
-npm run format        # Format with Prettier
+pnpm dev      # Development server (http://localhost:3000)
+pnpm build    # Production build
+pnpm start    # Start production server
+pnpm lint     # Run ESLint
+pnpm lint:fix # Fix ESLint issues
+pnpm format   # Format with Prettier
 ```
 
-## Technology Stack
+## Stack
 
-- **Next.js**: 16.2.2 with App Router (src/app/)
-- **React**: 19.2.3 with React Compiler enabled (next.config.ts)
-- **Tailwind CSS**: v4.2.2 with CSS-based configuration
-- **TypeScript**: 5 with strict mode enabled
-- **shadcn/ui**: Component system using Radix UI primitives
+- **Next.js** 16.2.2 (App Router)
+- **React** 19.2.4 (React Compiler enabled)
+- **Tailwind CSS** v4.2.2 (CSS-based config)
+- **TypeScript** 6 (strict mode)
+- **shadcn/ui** + **lucide-react**
 
-## Project Structure
+## Structure
 
 ```
 src/
-├── app/              # Next.js App Router pages
-│   ├── layout.tsx    # Root layout with Geist font
+├── app/              # Pages: /, /about, /features, /pricing, /docs, /api-demo, /todo
+│   ├── layout.tsx    # Root layout with Navbar
 │   ├── page.tsx      # Home page
-│   └── globals.css   # Tailwind v4 config + custom styles
-├── components/ui/    # shadcn/ui components (button, input, label)
+│   └── globals.css   # Tailwind v4 config + utilities
+├── components/
+│   ├── ui/           # shadcn: button, input, label
+│   └── navbar.tsx    # Responsive nav with mobile menu
 └── lib/
-    └── utils.ts      # cn() helper for Tailwind class merging
+    ├── utils.ts      # cn() helper
+    └── api/          # API utilities
+        ├── client.ts # HTTP client (apiClient, createApi, ApiClientError)
+        ├── hooks.ts  # useApi, useMutation, usePaginated, useManualApi
+        ├── server.ts # CORS, response helpers, validation
+        └── index.ts  # Centralized exports
 ```
 
-## Key Conventions
+## Conventions
 
-### Styling (Tailwind CSS v4)
-
-Tailwind v4 uses CSS-based configuration in `src/app/globals.css`:
-
-- Theme variables defined as CSS custom properties in `:root`
-- Use `@theme inline` to map CSS variables to Tailwind theme keys
+### Styling (Tailwind v4)
+- Config in `src/app/globals.css` using `@theme inline`
 - Custom utilities: `.glass`, `.glow`, `.gradient-text`, `.mesh-gradient`, `.spotlight-card`
-- Dark mode: toggle `.dark` class on document element
+- Dark mode: toggle `.dark` class on document
 
-### Component Patterns
-
-Components follow shadcn/ui conventions:
-- Use `cva` (class-variance-authority) for variant management
-- Use `cn()` utility from `@/lib/utils` for conditional class merging
+### Components
+- Use `cva` for variants, `cn()` for class merging
 - Forward refs with `React.forwardRef`
-- Use Radix UI primitives for accessibility
+- Use Radix UI primitives
 
-### Path Aliases
+### API (`src/lib/api`)
+- **Client**: `apiClient.get/post/put/patch/delete`, `createApi(baseUrl)`
+- **Hooks**: `useApi(url)`, `useMutation(url, method)`, `usePaginated(baseUrl, endpoint)`
+- **Server**: `success()`, `error()`, `setCorsHeaders()`, `validateRequest()`
 
-TypeScript path mapping in `tsconfig.json`:
+### Paths
 - `@/*` → `src/*`
 - `@/components/*` → `src/components/*`
 - `@/lib/*` → `src/lib/*`
 
-### ESLint Configuration
+## Notes
 
-Flat config in `eslint.config.mjs`:
-- Uses `eslint-config-next` for web vitals and TypeScript
-- Prettier integration via `eslint-config-prettier`
-- Custom rules: `@typescript-eslint/no-unused-vars` (warn), `no-console` (warn, allows warn/error)
-
-## Important Notes
-
-- React Compiler is enabled in `next.config.ts`
-- No testing framework is currently configured
-- Dependabot is configured to update dependencies weekly (ignores major versions)
+- React Compiler enabled in `next.config.ts`
+- No testing framework configured
+- Navbar included in root layout, navigation: Home, Features, Pricing, API, Docs, About
