@@ -127,25 +127,25 @@ const features = [
     icon: <Zap className="h-5 w-5" />,
     title: 'Lightning Fast',
     description: 'Next.js 16 with React Compiler enabled for optimal performance. Edge-ready deployment.',
-    href: '/features',
+    href: '/features' as const,
   },
   {
     icon: <Shield className="h-5 w-5" />,
     title: 'Type Safe',
     description: 'Built with TypeScript in strict mode. Full type safety across your entire application.',
-    href: '/features',
+    href: '/features' as const,
   },
   {
     icon: <Globe className="h-5 w-5" />,
     title: 'Beautiful UI',
     description: '50+ shadcn/ui components with Tailwind CSS v4. Dark mode support out of the box.',
-    href: '/features',
+    href: '/features' as const,
   },
   {
     icon: <CheckSquare className="h-5 w-5" />,
     title: 'Todo Demo',
     description: 'Check out the demo app: Task list, learn how to use components, state management, and styling.',
-    href: '/todo',
+    href: '/todo' as const,
   },
 ]
 
