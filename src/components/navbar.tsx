@@ -6,10 +6,11 @@ import { Sparkles, Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 
-const navItems = [
+const navItems: { href: '/' | '/features' | '/pricing' | '/api-demo' | '/docs' | '/about'; label: string }[] = [
   { href: '/', label: '首页' },
   { href: '/features', label: '功能' },
   { href: '/pricing', label: '价格' },
+  { href: '/api-demo', label: 'API' },
   { href: '/docs', label: '文档' },
   { href: '/about', label: '关于' },
 ]
