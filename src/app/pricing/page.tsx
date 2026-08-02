@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Check, Sparkles, ArrowRight, Zap } from 'lucide-react'
+import { Check, ArrowRight, Zap } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 const plans = [
@@ -10,13 +10,7 @@ const plans = [
     price: 'Free',
     period: '',
     description: 'Perfect for personal projects and learning',
-    features: [
-      '3 projects',
-      'Basic UI components',
-      'Community support',
-      '1GB storage',
-      'Basic analytics',
-    ],
+    features: ['3 projects', 'Basic UI components', 'Community support', '1GB storage', 'Basic analytics'],
     cta: 'Start Free',
     popular: false,
   },
@@ -25,15 +19,7 @@ const plans = [
     price: '$15',
     period: '/month',
     description: 'For professional developers and small teams',
-    features: [
-      'Unlimited projects',
-      'All UI components',
-      'Priority support',
-      '100GB storage',
-      'Advanced analytics',
-      'Custom domain',
-      'Team collaboration',
-    ],
+    features: ['Unlimited projects', 'All UI components', 'Priority support', '100GB storage', 'Advanced analytics', 'Custom domain', 'Team collaboration'],
     cta: 'Upgrade Now',
     popular: true,
   },
@@ -42,166 +28,104 @@ const plans = [
     price: 'Custom',
     period: '',
     description: 'For large teams and enterprise applications',
-    features: [
-      'Everything unlimited',
-      'Dedicated account manager',
-      'SLA guarantee',
-      'Unlimited storage',
-      'Enterprise security',
-      'Private deployment',
-      'API access',
-      'Custom development',
-    ],
+    features: ['Everything unlimited', 'Dedicated account manager', 'SLA guarantee', 'Unlimited storage', 'Enterprise security', 'Private deployment', 'API access', 'Custom development'],
     cta: 'Contact Sales',
     popular: false,
   },
 ]
 
 export default function PricingPage() {
-  const [hoveredPlan, setHoveredPlan] = useState<number | null>(null)
-  const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>(
-    'monthly'
-  )
+  const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly')
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
-      {/* Background */}
-      <div className="fixed inset-0 -z-10">
-        <div className="mesh-gradient absolute inset-0" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(120,119,198,0.1),transparent)]" />
-      </div>
+    <div className="min-h-screen bg-white">
+      {/* Hero */}
+      <div className="mx-auto max-w-[980px] px-6 pt-24 pb-16">
+        <div className="text-center">
+          <span className="animate-fade-in inline-flex items-center gap-2 rounded-full bg-[#f5f5f7] px-4 py-1.5 text-xs font-medium text-[#6e6e73]">
+            <Zap className="h-3 w-3" />
+            Simple Pricing
+          </span>
+          <h1 className="animate-slide-up mt-6 text-3xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">
+            Choose the Right Plan
+          </h1>
+          <p className="animate-slide-up animation-delay-200 mx-auto mt-5 max-w-md text-base text-[#6e6e73]">
+            Upgrade or downgrade anytime. No hidden fees.
+          </p>
 
-      {/* Hero Section */}
-      <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-violet-500/5 to-transparent" />
-        <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <span className="animate-fade-in inline-flex items-center gap-2 rounded-full border border-violet-200 bg-violet-50/80 px-4 py-1.5 text-sm font-medium text-violet-700 backdrop-blur-sm dark:border-violet-800 dark:bg-violet-900/20 dark:text-violet-400">
-              <Sparkles className="h-4 w-4" />
-              Simple & Transparent Pricing
-            </span>
-            <h1 className="animate-slide-up mt-6 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl dark:text-white">
-              Choose the Right Plan for You
-            </h1>
-            <p className="animate-slide-up animation-delay-100 mx-auto mt-6 max-w-2xl text-lg text-slate-600 dark:text-slate-400">
-              Whether you&apos;re an individual developer or a large enterprise,
-              we have a plan that fits your needs. Upgrade or downgrade anytime,
-              no hidden fees.
-            </p>
-
-            {/* Billing Toggle */}
-            <div className="animate-slide-up animation-delay-200 mt-8 flex items-center justify-center gap-4">
-              <span
-                className={`text-sm font-medium transition-colors ${billingCycle === 'monthly' ? 'text-slate-900 dark:text-white' : 'text-slate-400'}`}>
-                Monthly
-              </span>
-              <button
-                onClick={() =>
-                  setBillingCycle(
-                    billingCycle === 'monthly' ? 'yearly' : 'monthly'
-                  )
-                }
-                className="relative h-7 w-12 rounded-full bg-slate-200 transition-colors dark:bg-slate-700">
-                <span
-                  className={`absolute top-0.5 h-6 w-6 rounded-full bg-white shadow-md transition-all dark:bg-slate-200 ${
-                    billingCycle === 'yearly' ? 'left-[22px]' : 'left-0.5'
-                  }`}
-                />
-              </button>
-              <span
-                className={`text-sm font-medium transition-colors ${billingCycle === 'yearly' ? 'text-slate-900 dark:text-white' : 'text-slate-400'}`}>
-                Yearly
-                <span className="ml-1 text-xs text-emerald-500">Save 20%</span>
-              </span>
-            </div>
+          {/* Billing Toggle */}
+          <div className="animate-slide-up animation-delay-300 mt-8 inline-flex items-center gap-1 rounded-full bg-[#f5f5f7] p-1">
+            <button
+              onClick={() => setBillingCycle('monthly')}
+              className={`rounded-full px-4 py-1.5 text-[13px] font-medium transition-all duration-200 ${
+                billingCycle === 'monthly'
+                  ? 'bg-white text-[#1d1d1f] shadow-sm'
+                  : 'text-[#6e6e73] hover:text-[#1d1d1f]'
+              }`}>
+              Monthly
+            </button>
+            <button
+              onClick={() => setBillingCycle('yearly')}
+              className={`rounded-full px-4 py-1.5 text-[13px] font-medium transition-all duration-200 ${
+                billingCycle === 'yearly'
+                  ? 'bg-white text-[#1d1d1f] shadow-sm'
+                  : 'text-[#6e6e73] hover:text-[#1d1d1f]'
+              }`}>
+              Yearly
+              <span className="ml-1.5 text-[11px] text-[#34c759]">-20%</span>
+            </button>
           </div>
         </div>
       </div>
 
       {/* Pricing Cards */}
-      <div className="mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
-        <div className="grid gap-8 lg:grid-cols-3">
+      <div className="mx-auto max-w-[980px] px-6 pb-24">
+        <div className="grid gap-4 lg:grid-cols-3">
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`animate-scale-in group relative overflow-hidden rounded-3xl border bg-white/80 p-8 backdrop-blur-xl transition-all duration-500 hover:scale-[1.02] dark:bg-slate-900/80 ${
+              className={`animate-scale-in card-hover group relative rounded-2xl p-6 ${
                 plan.popular
-                  ? 'border-violet-500 shadow-xl shadow-violet-500/10'
-                  : 'border-slate-200/50 hover:shadow-xl dark:border-slate-800/50'
+                  ? 'bg-[#1d1d1f] text-white'
+                  : 'bg-[#f5f5f7]'
               }`}
-              style={{ animationDelay: `${300 + index * 100}ms` }}
-              onMouseEnter={() => setHoveredPlan(index)}
-              onMouseLeave={() => setHoveredPlan(null)}>
+              style={{ animationDelay: `${250 + index * 100}ms` }}>
               {plan.popular && (
-                <div className="absolute top-6 -right-12 rotate-45 bg-gradient-to-r from-violet-600 to-fuchsia-600 px-12 py-1 text-xs font-semibold text-white">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#0071e3] px-3 py-0.5 text-[11px] font-medium text-white">
                   Most Popular
                 </div>
               )}
 
-              {/* Floating particles effect on hover */}
-              <div className="absolute inset-0 -z-10 overflow-hidden opacity-0 transition-opacity group-hover:opacity-100">
-                {[...Array(3)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="absolute h-2 w-2 rounded-full bg-violet-500/20"
-                    style={{
-                      left: `${20 + i * 30}%`,
-                      top: `${30 + i * 20}%`,
-                      animation: `float-slow ${3 + i}s ease-in-out infinite`,
-                      animationDelay: `${i * 0.5}s`,
-                    }}
-                  />
-                ))}
+              <div className="mb-5">
+                <h3 className={`text-sm font-semibold ${plan.popular ? 'text-white' : 'text-[#1d1d1f]'}`}>{plan.name}</h3>
+                <p className={`mt-1 text-[13px] ${plan.popular ? 'text-white/60' : 'text-[#6e6e73]'}`}>{plan.description}</p>
               </div>
 
-              <div className="mb-6">
-                <h3 className="text-xl font-semibold text-slate-900 dark:text-white">
-                  {plan.name}
-                </h3>
-                <p className="mt-2 text-sm text-slate-500">
-                  {plan.description}
-                </p>
-              </div>
-
-              <div className="mb-6">
-                <span className="text-4xl font-bold text-slate-900 dark:text-white">
-                  {plan.price}
-                </span>
-                <span className="text-slate-500">{plan.period}</span>
+              <div className="mb-5">
+                <span className={`text-3xl font-semibold tracking-tight ${plan.popular ? 'text-white' : 'text-[#1d1d1f]'}`}>{plan.price}</span>
+                <span className={`text-sm ${plan.popular ? 'text-white/40' : 'text-[#86868b]'}`}>{plan.period}</span>
                 {billingCycle === 'yearly' && plan.period && (
-                  <p className="mt-1 text-xs text-emerald-500">
-                    Yearly only ${Math.floor(15 * 12 * 0.8)}/year
-                  </p>
+                  <p className="mt-1 text-xs text-[#34c759]">${Math.floor(15 * 12 * 0.8)}/year billed annually</p>
                 )}
               </div>
 
               <Button
-                className={`group/btn w-full rounded-xl font-medium transition-all duration-300 ${
+                className={`h-9 w-full rounded-full text-[13px] font-medium transition-colors duration-200 ${
                   plan.popular
-                    ? 'bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white hover:from-violet-700 hover:to-fuchsia-700 hover:shadow-lg hover:shadow-violet-500/25'
-                    : 'bg-slate-100 text-slate-900 hover:bg-slate-200 dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700'
+                    ? 'bg-white text-[#1d1d1f] hover:bg-white/90'
+                    : 'bg-[#1d1d1f] text-white hover:bg-[#424245]'
                 }`}>
                 {plan.cta}
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
               </Button>
 
-              <ul className="mt-8 space-y-4">
+              <ul className="mt-6 space-y-2.5">
                 {plan.features.map((feature, featureIndex) => (
-                  <li
-                    key={featureIndex}
-                    className="flex items-start gap-3 transition-transform duration-300"
-                    style={{
-                      transform:
-                        hoveredPlan === index
-                          ? `translateX(${featureIndex * 2}px)`
-                          : 'translateX(0)',
-                    }}>
-                    <div className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-100 transition-transform duration-300 group-hover:scale-110 dark:bg-emerald-900/30">
-                      <Check className="h-3 w-3 text-emerald-600 dark:text-emerald-400" />
+                  <li key={featureIndex} className="flex items-center gap-2.5">
+                    <div className={`flex h-4 w-4 items-center justify-center rounded-full ${plan.popular ? 'bg-white/10' : 'bg-[#34c759]/10'}`}>
+                      <Check className={`h-2.5 w-2.5 ${plan.popular ? 'text-[#34c759]' : 'text-[#34c759]'}`} />
                     </div>
-                    <span className="text-sm text-slate-600 dark:text-slate-400">
-                      {feature}
-                    </span>
+                    <span className={`text-[13px] ${plan.popular ? 'text-white/70' : 'text-[#6e6e73]'}`}>{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -210,42 +134,13 @@ export default function PricingPage() {
         </div>
 
         {/* Trust Badges */}
-        <div className="animate-fade-in animation-delay-700 mt-16 flex flex-wrap items-center justify-center gap-8">
-          {[
-            { icon: <Zap className="h-5 w-5" />, text: 'Instant Activation' },
-            { icon: <Check className="h-5 w-5" />, text: 'Cancel Anytime' },
-            {
-              icon: <Sparkles className="h-5 w-5" />,
-              text: '7-Day Money Back',
-            },
-          ].map((badge, index) => (
-            <div
-              key={index}
-              className="flex items-center gap-2 text-sm text-slate-500 transition-colors hover:text-slate-700 dark:hover:text-slate-300">
-              <span className="text-violet-500">{badge.icon}</span>
-              <span>{badge.text}</span>
+        <div className="animate-fade-in animation-delay-700 mt-14 flex flex-wrap items-center justify-center gap-8">
+          {['Instant Activation', 'Cancel Anytime', '7-Day Money Back'].map((text, index) => (
+            <div key={index} className="flex items-center gap-2 text-[13px] text-[#86868b]">
+              <span className="h-1 w-1 rounded-full bg-[#0071e3]" />
+              {text}
             </div>
           ))}
-        </div>
-
-        {/* FAQ Link */}
-        <div className="animate-fade-in animation-delay-800 mt-8 text-center">
-          <p className="text-slate-500">
-            Still have questions?{' '}
-            <a
-              href="#"
-              className="group inline-flex items-center gap-1 font-medium text-violet-600 transition-colors hover:text-violet-500 dark:text-violet-400">
-              View FAQ
-              <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
-            </a>{' '}
-            or{' '}
-            <a
-              href="#"
-              className="group inline-flex items-center gap-1 font-medium text-violet-600 transition-colors hover:text-violet-500 dark:text-violet-400">
-              Contact Us
-              <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
-            </a>
-          </p>
         </div>
       </div>
     </div>
