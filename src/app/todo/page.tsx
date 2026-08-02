@@ -97,7 +97,7 @@ export default function TodoPage() {
                 </span>
                 <button
                   onClick={() => deleteTask(task.id)}
-                  className="text-slate-400 opacity-0 transition-all hover:text-red-500 group-hover:opacity-100">
+                  className="text-slate-400 opacity-0 transition-all group-hover:opacity-100 hover:text-red-500">
                   <Trash2 className="h-4 w-4" />
                 </button>
               </div>

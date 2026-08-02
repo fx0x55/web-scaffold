@@ -2,12 +2,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  transpilePackages: ["lucide-react"],
+  transpilePackages: ['lucide-react'],
   reactCompiler: true,
   typedRoutes: true,
   experimental: {
-    serverActions: { bodySizeLimit: "10mb" },
+    serverActions: { bodySizeLimit: '10mb' },
   },
-};
+}
 
-export default nextConfig;
+export default nextConfig

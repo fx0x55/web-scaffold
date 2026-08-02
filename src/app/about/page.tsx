@@ -154,7 +154,7 @@ export default function AboutPage() {
               <Sparkles className="h-4 w-4" />
               Our Story
             </span>
-            <h1 className="animate-slide-up mt-6 text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">
+            <h1 className="animate-slide-up mt-6 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl dark:text-white">
               About Scaffold
             </h1>
             <p className="animate-slide-up animation-delay-100 mx-auto mt-6 max-w-2xl text-lg text-slate-600 dark:text-slate-400">
@@ -364,7 +364,7 @@ function ValueCard({
         transition: `opacity 0.6s ease ${index * 100}ms, transform 0.6s ease ${index * 100}ms`,
       }}>
       <div
-        className={`mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${value.gradient} text-white shadow-lg shadow-violet-500/25 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110`}>
+        className={`mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${value.gradient} text-white shadow-lg shadow-violet-500/25 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6`}>
         {value.icon}
       </div>
       <h3 className="mt-4 text-lg font-semibold text-slate-900 transition-colors group-hover:text-violet-600 dark:text-white dark:group-hover:text-violet-400">

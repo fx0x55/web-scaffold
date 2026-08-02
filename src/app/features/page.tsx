@@ -204,7 +204,7 @@ export default function FeaturesPage() {
               <Zap className="h-4 w-4" />
               Powerful Features
             </span>
-            <h1 className="animate-slide-up mt-6 text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">
+            <h1 className="animate-slide-up mt-6 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl dark:text-white">
               Complete Solution for
               <span className="gradient-text-animated block">
                 Modern Development
@@ -238,7 +238,7 @@ export default function FeaturesPage() {
               onMouseLeave={() => setHoveredIndex(null)}>
               <div className="absolute inset-0 -z-10 bg-gradient-to-br from-violet-500/5 to-fuchsia-500/5 opacity-0 transition-opacity group-hover:opacity-100" />
               <div
-                className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${feature.gradient} shadow-lg transition-all duration-300 group-hover:rotate-3 group-hover:scale-110`}>
+                className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${feature.gradient} shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:rotate-3`}>
                 <span className="text-white">{feature.icon}</span>
               </div>
               <h3 className="mt-4 text-lg font-semibold text-slate-900 dark:text-white">

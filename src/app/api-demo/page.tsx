@@ -133,7 +133,7 @@ export default function ApiDemoPage() {
               <Zap className="h-4 w-4" />
               API Playground
             </span>
-            <h1 className="mt-6 text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
+            <h1 className="mt-6 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl dark:text-white">
               <span className="gradient-text-animated">{animatedTitle}</span>
             </h1>
             <p className="animate-slide-up animation-delay-100 mx-auto mt-4 max-w-2xl text-lg text-slate-500 dark:text-slate-400">
@@ -173,7 +173,7 @@ export default function ApiDemoPage() {
                   Environment Variable
                 </span>
               </div>
-              <code className="break-all text-xs text-slate-500">
+              <code className="text-xs break-all text-slate-500">
                 NEXT_PUBLIC_API_URL=
                 {process.env.NEXT_PUBLIC_API_URL || '(not set)'}
               </code>
@@ -492,7 +492,7 @@ function ApiTest({
             Request URL
           </span>
         </div>
-        <code className="break-all text-xs text-slate-500">{fullUrl}</code>
+        <code className="text-xs break-all text-slate-500">{fullUrl}</code>
       </div>
 
       {/* Send Button with hover effect */}
@@ -513,7 +513,7 @@ function ApiTest({
       {responseVisible && (
         <div
           className={`relative transition-all duration-500 ${data || error ? 'opacity-100' : 'opacity-50'}`}>
-          <div className="absolute right-2 top-2 flex items-center gap-2">
+          <div className="absolute top-2 right-2 flex items-center gap-2">
             {Boolean(data) && (
               <span className="flex animate-bounce items-center gap-1 text-xs text-emerald-500">
                 <CheckCircle className="h-3 w-3" />

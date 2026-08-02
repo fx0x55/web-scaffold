@@ -97,7 +97,7 @@ export default function DocsPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-violet-500/5 to-transparent" />
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="animate-slide-up text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
+            <h1 className="animate-slide-up text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl dark:text-white">
               Documentation
             </h1>
             <p className="animate-slide-up animation-delay-100 mx-auto mt-4 max-w-2xl text-lg text-slate-600 dark:text-slate-400">
@@ -109,7 +109,7 @@ export default function DocsPage() {
               <div
                 className={`relative transition-all duration-300 ${isSearchFocused ? 'scale-105' : ''}`}>
                 <Search
-                  className={`absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 transition-colors ${isSearchFocused ? 'text-violet-500' : 'text-slate-400'}`}
+                  className={`absolute top-1/2 left-4 h-5 w-5 -translate-y-1/2 transition-colors ${isSearchFocused ? 'text-violet-500' : 'text-slate-400'}`}
                 />
                 <input
                   type="text"
@@ -118,11 +118,11 @@ export default function DocsPage() {
                   onChange={e => setSearchQuery(e.target.value)}
                   onFocus={() => setIsSearchFocused(true)}
                   onBlur={() => setIsSearchFocused(false)}
-                  className="w-full rounded-2xl border border-slate-200 bg-white/80 py-4 pl-12 pr-4 text-slate-900 shadow-sm backdrop-blur-xl transition-all focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20 dark:border-slate-800 dark:bg-slate-900/80 dark:text-white"
+                  className="w-full rounded-2xl border border-slate-200 bg-white/80 py-4 pr-4 pl-12 text-slate-900 shadow-sm backdrop-blur-xl transition-all focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 focus:outline-none dark:border-slate-800 dark:bg-slate-900/80 dark:text-white"
                 />
                 {/* Search suggestions dropdown */}
                 {isSearchFocused && searchQuery && (
-                  <div className="absolute left-0 right-0 top-full mt-2 rounded-xl border border-slate-200 bg-white/95 p-2 shadow-xl backdrop-blur-xl dark:border-slate-800 dark:bg-slate-900/95">
+                  <div className="absolute top-full right-0 left-0 mt-2 rounded-xl border border-slate-200 bg-white/95 p-2 shadow-xl backdrop-blur-xl dark:border-slate-800 dark:bg-slate-900/95">
                     {filteredSections.length > 0 ? (
                       filteredSections.map(section => (
                         <div key={section.title} className="mb-2">
@@ -209,7 +209,7 @@ export default function DocsPage() {
                   onMouseLeave={() => setHoveredSection(null)}>
                   <div className="mb-4 flex items-center gap-3">
                     <div
-                      className={`flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white shadow-lg shadow-violet-500/25 transition-all duration-300 ${hoveredSection === section.title ? 'rotate-3 scale-110' : ''}`}>
+                      className={`flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white shadow-lg shadow-violet-500/25 transition-all duration-300 ${hoveredSection === section.title ? 'scale-110 rotate-3' : ''}`}>
                       {section.icon}
                     </div>
                     <h2 className="text-lg font-semibold text-slate-900 dark:text-white">
@@ -242,7 +242,7 @@ export default function DocsPage() {
             {/* CTA */}
             <div className="animate-fade-in animation-delay-400 mt-8 rounded-3xl border border-slate-200/50 bg-gradient-to-br from-violet-500/5 via-fuchsia-500/5 to-transparent p-8 dark:border-slate-800/50">
               <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white shadow-lg shadow-violet-500/25 transition-transform duration-300 hover:rotate-3 hover:scale-110">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white shadow-lg shadow-violet-500/25 transition-transform duration-300 hover:scale-110 hover:rotate-3">
                   <FileText className="h-6 w-6" />
                 </div>
                 <div className="flex-1">

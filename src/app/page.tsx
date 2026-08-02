@@ -28,7 +28,7 @@ export default function Home() {
           </div>
 
           {/* Title */}
-          <h1 className="animate-slide-up mt-8 text-5xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-6xl lg:text-7xl">
+          <h1 className="animate-slide-up mt-8 text-5xl font-bold tracking-tight text-slate-900 sm:text-6xl lg:text-7xl dark:text-white">
             Build faster with{' '}
             <span className="gradient-text-animated">modern stack</span>
           </h1>
@@ -68,7 +68,7 @@ export default function Home() {
               href={feature.href}
               className="animate-scale-in group overflow-hidden rounded-2xl border border-slate-200/60 bg-white/70 p-6 backdrop-blur-xl transition-all duration-300 hover:scale-[1.02] hover:border-violet-300/50 hover:shadow-xl hover:shadow-violet-500/5 dark:border-slate-800/60 dark:bg-slate-900/70 dark:hover:border-violet-700/30"
               style={{ animationDelay: `${400 + index * 100}ms` }}>
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white shadow-lg shadow-violet-500/20 transition-transform duration-300 group-hover:rotate-3 group-hover:scale-110">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white shadow-lg shadow-violet-500/20 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
                 {feature.icon}
               </div>
               <h3 className="mt-4 text-lg font-semibold text-slate-900 dark:text-white">

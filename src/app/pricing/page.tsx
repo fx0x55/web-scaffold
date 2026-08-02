@@ -80,7 +80,7 @@ export default function PricingPage() {
               <Sparkles className="h-4 w-4" />
               Simple & Transparent Pricing
             </span>
-            <h1 className="animate-slide-up mt-6 text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
+            <h1 className="animate-slide-up mt-6 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl dark:text-white">
               Choose the Right Plan for You
             </h1>
             <p className="animate-slide-up animation-delay-100 mx-auto mt-6 max-w-2xl text-lg text-slate-600 dark:text-slate-400">
@@ -133,7 +133,7 @@ export default function PricingPage() {
               onMouseEnter={() => setHoveredPlan(index)}
               onMouseLeave={() => setHoveredPlan(null)}>
               {plan.popular && (
-                <div className="absolute -right-12 top-6 rotate-45 bg-gradient-to-r from-violet-600 to-fuchsia-600 px-12 py-1 text-xs font-semibold text-white">
+                <div className="absolute top-6 -right-12 rotate-45 bg-gradient-to-r from-violet-600 to-fuchsia-600 px-12 py-1 text-xs font-semibold text-white">
                   Most Popular
                 </div>
               )}

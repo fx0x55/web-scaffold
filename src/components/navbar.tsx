@@ -67,7 +67,7 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 dark:border-slate-800 md:hidden">
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 md:hidden dark:border-slate-800">
             {mobileMenuOpen ? (
               <X className="h-4 w-4 text-slate-600 dark:text-slate-400" />
             ) : (
@@ -78,7 +78,7 @@ export function Navbar() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="border-t border-slate-200/50 py-4 dark:border-slate-800/50 md:hidden">
+          <div className="border-t border-slate-200/50 py-4 md:hidden dark:border-slate-800/50">
             <div className="flex flex-col gap-1">
               {navItems.map(item => (
                 <Link
