@@ -15,9 +15,9 @@ pnpm format   # Format with Prettier
 
 ## Stack
 
-- **Next.js** 16.2.2 (App Router)
-- **React** 19.2.4 (React Compiler enabled)
-- **Tailwind CSS** v4.2.2 (CSS-based config)
+- **Next.js** 16.2 (App Router)
+- **React** 19.2 (React Compiler enabled)
+- **Tailwind CSS** v4.3 (CSS-based config)
 - **TypeScript** 6 (strict mode)
 - **shadcn/ui** + **lucide-react**
 
@@ -60,11 +60,9 @@ src/
 
 ### Paths
 - `@/*` → `src/*`
-- `@/components/*` → `src/components/*`
-- `@/lib/*` → `src/lib/*`
 
 ## Notes
 
-- React Compiler enabled in `next.config.ts`
+- React Compiler enabled in `next.config.mjs`
 - No testing framework configured
 - Navbar included in root layout, navigation: Home, Features, Pricing, API, Docs, About

@@ -12,6 +12,5 @@
   "quoteProps": "consistent",
   "endOfLine": "lf",
   "plugins": ["prettier-plugin-tailwindcss"],
-  "tailwindConfig": "./tailwind.config.ts",
   "tailwindFunctions": ["clsx", "cn", "cva"]
 }

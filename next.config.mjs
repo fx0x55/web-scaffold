@@ -2,7 +2,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  transpilePackages: ["geist", "lucide-react"],
+  transpilePackages: ["lucide-react"],
   reactCompiler: true,
   typedRoutes: true,
   experimental: {
