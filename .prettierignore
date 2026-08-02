@@ -1,0 +1,7 @@
+pnpm-lock.yaml
+.next
+out
+build
+dist
+node_modules
+next-env.d.ts
