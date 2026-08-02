@@ -1,7 +1,12 @@
-'use client'
-
 import { Button } from '@/components/ui/button'
-import { Zap, Shield, Globe, ArrowRight, Sparkles } from 'lucide-react'
+import {
+  Zap,
+  Shield,
+  Globe,
+  ArrowRight,
+  Sparkles,
+  CheckSquare,
+} from 'lucide-react'
 import Link from 'next/link'
 
 export default function Home() {
@@ -109,8 +114,6 @@ export default function Home() {
     </div>
   )
 }
-
-import { CheckSquare } from 'lucide-react'
 
 const features = [
   {

@@ -91,7 +91,6 @@ export default function ApiDemoPage() {
   const [credentials, setCredentials] = useState<
     'include' | 'same-origin' | 'omit'
   >('same-origin')
-  const [, setHoveredCard] = useState<number | null>(null)
 
   // Animated typing effect for title
   const animatedTitle = useTypewriter(
@@ -149,9 +148,7 @@ export default function ApiDemoPage() {
           {/* API Configuration Card */}
           <div
             className="animate-scale-in group rounded-2xl border border-slate-200/50 bg-white/80 p-6 backdrop-blur-xl transition-all duration-500 hover:shadow-xl dark:border-slate-800/50 dark:bg-slate-900/80"
-            style={{ animationDelay: '200ms' }}
-            onMouseEnter={() => setHoveredCard(0)}
-            onMouseLeave={() => setHoveredCard(null)}>
+            style={{ animationDelay: '200ms' }}>
             <div className="mb-6 flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 transition-transform duration-300 group-hover:scale-110">
                 <Globe className="h-5 w-5 text-white" />
@@ -269,9 +266,7 @@ export default function ApiDemoPage() {
           {/* Example APIs Card */}
           <div
             className="animate-scale-in group rounded-2xl border border-slate-200/50 bg-white/80 p-6 backdrop-blur-xl transition-all duration-500 hover:shadow-xl dark:border-slate-800/50 dark:bg-slate-900/80"
-            style={{ animationDelay: '300ms' }}
-            onMouseEnter={() => setHoveredCard(1)}
-            onMouseLeave={() => setHoveredCard(null)}>
+            style={{ animationDelay: '300ms' }}>
             <div className="mb-6 flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 transition-transform duration-300 group-hover:scale-110">
                 <ExternalLink className="h-5 w-5 text-white" />
@@ -574,7 +569,7 @@ function ApiTest({
               <div className="mt-2 space-y-1 text-xs">
                 <p className="flex items-center gap-1">
                   <ChevronRight className="h-3 w-3" />
-                  Try using <strong>Credentia ls = &quot;omit&quot;</strong>
+                  Try using <strong>Credentials = &quot;omit&quot;</strong>
                 </p>
                 <p className="flex items-center gap-1">
                   <ChevronRight className="h-3 w-3" />
