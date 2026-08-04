@@ -16,20 +16,16 @@ import {
 const docSections = [
   {
     title: 'Quick Start',
-    icon: <Zap className="h-5 w-5" />,
+    icon: <Zap className="h-4 w-4" />,
     items: [
       { title: 'Installation', href: '#', desc: 'Get started in 5 minutes' },
-      {
-        title: 'Project Structure',
-        href: '#',
-        desc: 'Understand directory organization',
-      },
+      { title: 'Project Structure', href: '#', desc: 'Understand directory organization' },
       { title: 'First Page', href: '#', desc: 'Create Hello World' },
     ],
   },
   {
     title: 'Core Concepts',
-    icon: <Book className="h-5 w-5" />,
+    icon: <Book className="h-4 w-4" />,
     items: [
       { title: 'Routing', href: '#', desc: 'App Router deep dive' },
       { title: 'Data Fetching', href: '#', desc: 'Server & Client Components' },
@@ -38,7 +34,7 @@ const docSections = [
   },
   {
     title: 'Components',
-    icon: <Layers className="h-5 w-5" />,
+    icon: <Layers className="h-4 w-4" />,
     items: [
       { title: 'Basic Components', href: '#', desc: 'Button, Input, Card' },
       { title: 'Form Components', href: '#', desc: 'Form, Select, Checkbox' },
@@ -47,7 +43,7 @@ const docSections = [
   },
   {
     title: 'API Reference',
-    icon: <Code className="h-5 w-5" />,
+    icon: <Code className="h-4 w-4" />,
     items: [
       { title: 'Configuration', href: '#', desc: 'next.config.ts' },
       { title: 'CLI Commands', href: '#', desc: 'All available commands' },
@@ -59,19 +55,13 @@ const docSections = [
 const recentUpdates = [
   { version: 'v2.1.0', date: '2025-04-01', title: 'Added dark mode support' },
   { version: 'v2.0.0', date: '2025-03-15', title: 'Upgraded to Next.js 16' },
-  {
-    version: 'v1.9.0',
-    date: '2025-02-28',
-    title: 'Improved build performance',
-  },
+  { version: 'v1.9.0', date: '2025-02-28', title: 'Improved build performance' },
 ]
 
 export default function DocsPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [isSearchFocused, setIsSearchFocused] = useState(false)
-  const [hoveredSection, setHoveredSection] = useState<string | null>(null)
 
-  // Filter sections based on search
   const filteredSections = docSections
     .map(section => ({
       ...section,
@@ -85,72 +75,48 @@ export default function DocsPage() {
     .filter(section => section.items.length > 0)
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
-      {/* Background */}
-      <div className="fixed inset-0 -z-10">
-        <div className="mesh-gradient absolute inset-0" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(120,119,198,0.1),transparent)]" />
-      </div>
-
-      {/* Hero Section */}
-      <div className="relative overflow-hidden border-b border-slate-200/50 dark:border-slate-800/50">
-        <div className="absolute inset-0 bg-gradient-to-b from-violet-500/5 to-transparent" />
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-white">
+      {/* Hero */}
+      <div className="border-b border-[#d2d2d7]/60">
+        <div className="mx-auto max-w-[980px] px-6 py-16">
           <div className="text-center">
-            <h1 className="animate-slide-up text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl dark:text-white">
-              Documentation
-            </h1>
-            <p className="animate-slide-up animation-delay-100 mx-auto mt-4 max-w-2xl text-lg text-slate-600 dark:text-slate-400">
-              Master every detail of Scaffold from beginner to advanced
+            <h1 className="animate-slide-up text-3xl font-semibold tracking-tight text-[#1d1d1f] sm:text-4xl">Documentation</h1>
+            <p className="animate-slide-up animation-delay-100 mx-auto mt-3 max-w-md text-base text-[#6e6e73]">
+              Master every detail of Scaffold
             </p>
 
-            {/* Search Bar with Animation */}
-            <div className="animate-slide-up animation-delay-200 mx-auto mt-8 max-w-xl">
-              <div
-                className={`relative transition-all duration-300 ${isSearchFocused ? 'scale-105' : ''}`}>
-                <Search
-                  className={`absolute top-1/2 left-4 h-5 w-5 -translate-y-1/2 transition-colors ${isSearchFocused ? 'text-violet-500' : 'text-slate-400'}`}
-                />
+            {/* Search */}
+            <div className="animate-slide-up animation-delay-200 mx-auto mt-8 max-w-md">
+              <div className="relative">
+                <Search className="absolute top-1/2 left-3.5 h-4 w-4 -translate-y-1/2 text-[#86868b]" />
                 <input
                   type="text"
-                  placeholder="Search documentation..."
+                  placeholder="Search docs..."
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.target.value)}
                   onFocus={() => setIsSearchFocused(true)}
                   onBlur={() => setIsSearchFocused(false)}
-                  className="w-full rounded-2xl border border-slate-200 bg-white/80 py-4 pr-4 pl-12 text-slate-900 shadow-sm backdrop-blur-xl transition-all focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 focus:outline-none dark:border-slate-800 dark:bg-slate-900/80 dark:text-white"
+                  className="h-10 w-full rounded-full border border-[#d2d2d7] bg-[#f5f5f7] pl-10 pr-4 text-sm text-[#1d1d1f] transition-all duration-200 placeholder:text-[#86868b] focus:border-[#0071e3] focus:bg-white focus:ring-2 focus:ring-[#0071e3]/10 focus:outline-none"
                 />
-                {/* Search suggestions dropdown */}
                 {isSearchFocused && searchQuery && (
-                  <div className="absolute top-full right-0 left-0 mt-2 rounded-xl border border-slate-200 bg-white/95 p-2 shadow-xl backdrop-blur-xl dark:border-slate-800 dark:bg-slate-900/95">
+                  <div className="animate-slide-down absolute top-full right-0 left-0 z-10 mt-2 rounded-xl border border-[#d2d2d7] bg-white p-1.5 shadow-lg shadow-black/5">
                     {filteredSections.length > 0 ? (
                       filteredSections.map(section => (
-                        <div key={section.title} className="mb-2">
-                          <div className="px-3 py-1 text-xs font-semibold text-slate-400">
-                            {section.title}
-                          </div>
+                        <div key={section.title} className="mb-1">
+                          <div className="px-2.5 py-1 text-[11px] font-medium tracking-wide text-[#86868b] uppercase">{section.title}</div>
                           {section.items.map(item => (
-                            <a
-                              key={item.title}
-                              href={item.href}
-                              className="flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-700 transition-colors hover:bg-violet-50 dark:text-slate-300 dark:hover:bg-violet-900/20">
-                              <div>
-                                <span className="font-medium">
-                                  {item.title}
-                                </span>
-                                <span className="ml-2 text-slate-400">
-                                  {item.desc}
-                                </span>
+                            <a key={item.title} href={item.href} className="flex items-center justify-between rounded-lg px-2.5 py-2 text-sm text-[#1d1d1f] transition-colors hover:bg-[#f5f5f7]">
+                              <div className="flex items-center gap-2">
+                                <span className="font-medium">{item.title}</span>
+                                <span className="text-xs text-[#86868b]">{item.desc}</span>
                               </div>
-                              <ChevronRight className="h-4 w-4 text-slate-400" />
+                              <ChevronRight className="h-3.5 w-3.5 text-[#d2d2d7]" />
                             </a>
                           ))}
                         </div>
                       ))
                     ) : (
-                      <div className="px-3 py-4 text-center text-sm text-slate-500">
-                        No documentation found
-                      </div>
+                      <div className="px-3 py-4 text-center text-sm text-[#86868b]">No results found</div>
                     )}
                   </div>
                 )}
@@ -161,76 +127,46 @@ export default function DocsPage() {
       </div>
 
       {/* Main Content */}
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-8 lg:grid-cols-4">
+      <div className="mx-auto max-w-[980px] px-6 py-12">
+        <div className="grid gap-10 lg:grid-cols-4">
           {/* Sidebar */}
           <div className="hidden lg:block">
-            <div className="sticky top-24 space-y-8">
-              <div className="animate-fade-in">
-                <h3 className="mb-4 text-sm font-semibold text-slate-900 dark:text-white">
-                  Recent Updates
-                </h3>
-                <div className="space-y-3">
-                  {recentUpdates.map((update, index) => (
-                    <div
-                      key={index}
-                      className="group cursor-pointer rounded-xl border border-slate-200/50 bg-white/80 p-3 backdrop-blur-xl transition-all hover:border-violet-300 hover:shadow-md dark:border-slate-800/50 dark:bg-slate-900/80"
-                      style={{
-                        animation: `fade-in 0.5s ease ${index * 100}ms forwards`,
-                        opacity: 0,
-                      }}>
-                      <div className="flex items-center gap-2">
-                        <span className="rounded-md bg-violet-100 px-2 py-0.5 text-xs font-medium text-violet-700 dark:bg-violet-900/30 dark:text-violet-400">
-                          {update.version}
-                        </span>
-                        <span className="text-xs text-slate-400">
-                          {update.date}
-                        </span>
-                      </div>
-                      <p className="mt-1 text-sm text-slate-700 transition-colors group-hover:text-violet-600 dark:text-slate-300 dark:group-hover:text-violet-400">
-                        {update.title}
-                      </p>
+            <div className="sticky top-20">
+              <h3 className="mb-3 text-[11px] font-medium tracking-wide text-[#86868b] uppercase">Recent Updates</h3>
+              <div className="space-y-2">
+                {recentUpdates.map((update, index) => (
+                  <div key={index} className="animate-fade-in card-hover group cursor-pointer rounded-xl bg-[#f5f5f7] p-3" style={{ animationDelay: `${index * 80}ms` }}>
+                    <div className="flex items-center gap-2">
+                      <span className="rounded-md bg-[#0071e3]/10 px-1.5 py-0.5 text-[11px] font-medium text-[#0071e3]">{update.version}</span>
+                      <span className="text-[11px] text-[#86868b]">{update.date}</span>
                     </div>
-                  ))}
-                </div>
+                    <p className="mt-1.5 text-[13px] text-[#6e6e73] transition-colors group-hover:text-[#1d1d1f]">{update.title}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
 
           {/* Doc Grid */}
           <div className="lg:col-span-3">
-            <div className="grid gap-6 sm:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2">
               {docSections.map((section, index) => (
-                <div
-                  key={index}
-                  className="animate-scale-in group overflow-hidden rounded-3xl border border-slate-200/50 bg-white/80 p-6 backdrop-blur-xl transition-all duration-500 hover:scale-[1.02] hover:shadow-xl dark:border-slate-800/50 dark:bg-slate-900/80"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                  onMouseEnter={() => setHoveredSection(section.title)}
-                  onMouseLeave={() => setHoveredSection(null)}>
-                  <div className="mb-4 flex items-center gap-3">
-                    <div
-                      className={`flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white shadow-lg shadow-violet-500/25 transition-all duration-300 ${hoveredSection === section.title ? 'scale-110 rotate-3' : ''}`}>
+                <div key={index} className="animate-scale-in card-hover group rounded-2xl bg-[#f5f5f7] p-5" style={{ animationDelay: `${index * 60}ms` }}>
+                  <div className="mb-4 flex items-center gap-2.5">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white text-[#1d1d1f] shadow-sm transition-colors duration-300 group-hover:text-[#0071e3]">
                       {section.icon}
                     </div>
-                    <h2 className="text-lg font-semibold text-slate-900 dark:text-white">
-                      {section.title}
-                    </h2>
+                    <h2 className="text-sm font-semibold text-[#1d1d1f]">{section.title}</h2>
                   </div>
-                  <ul className="space-y-2">
+                  <ul className="space-y-0.5">
                     {section.items.map((item, itemIndex) => (
                       <li key={itemIndex}>
-                        <a
-                          href={item.href}
-                          className="group/item flex items-start justify-between rounded-xl p-3 transition-all hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                        <a href={item.href} className="group/item flex items-center justify-between rounded-lg px-2.5 py-2 transition-colors hover:bg-white">
                           <div>
-                            <p className="font-medium text-slate-900 transition-colors group-hover/item:text-violet-600 dark:text-white dark:group-hover/item:text-violet-400">
-                              {item.title}
-                            </p>
-                            <p className="text-sm text-slate-500">
-                              {item.desc}
-                            </p>
+                            <p className="text-[13px] font-medium text-[#1d1d1f] transition-colors group-hover/item:text-[#0071e3]">{item.title}</p>
+                            <p className="text-xs text-[#86868b]">{item.desc}</p>
                           </div>
-                          <ArrowRight className="h-4 w-4 text-slate-400 transition-transform group-hover/item:translate-x-1" />
+                          <ArrowRight className="h-3.5 w-3.5 text-[#d2d2d7] opacity-0 transition-all duration-200 group-hover/item:translate-x-0.5 group-hover/item:opacity-100" />
                         </a>
                       </li>
                     ))}
@@ -240,70 +176,37 @@ export default function DocsPage() {
             </div>
 
             {/* CTA */}
-            <div className="animate-fade-in animation-delay-400 mt-8 rounded-3xl border border-slate-200/50 bg-gradient-to-br from-violet-500/5 via-fuchsia-500/5 to-transparent p-8 dark:border-slate-800/50">
-              <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white shadow-lg shadow-violet-500/25 transition-transform duration-300 hover:scale-110 hover:rotate-3">
-                  <FileText className="h-6 w-6" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
-                    Can&apos;t find the documentation you need?
-                  </h3>
-                  <p className="text-slate-600 dark:text-slate-400">
-                    Check out our GitHub repository or join our Discord
-                    community for help
-                  </p>
-                </div>
-                <div className="flex gap-3">
-                  <a
-                    href="#"
-                    className="group inline-flex items-center gap-2 rounded-xl bg-slate-900 px-4 py-2 text-sm font-medium text-white transition-all hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-lg dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100">
-                    <ExternalLink className="h-4 w-4" />
-                    GitHub
-                  </a>
-                  <a
-                    href="#"
-                    className="rounded-xl border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 transition-all hover:bg-slate-50 hover:shadow-md dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800">
-                    Discord
-                  </a>
-                </div>
+            <div className="animate-fade-in animation-delay-400 mt-6 flex flex-col items-center gap-4 rounded-2xl bg-[#f5f5f7] p-6 sm:flex-row">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-[#0071e3] shadow-sm">
+                <FileText className="h-5 w-5" />
+              </div>
+              <div className="flex-1 text-center sm:text-left">
+                <h3 className="text-sm font-semibold text-[#1d1d1f]">Can&apos;t find what you need?</h3>
+                <p className="text-[13px] text-[#6e6e73]">Check our GitHub or join the Discord community</p>
+              </div>
+              <div className="flex gap-2">
+                <a href="#" className="inline-flex h-8 items-center gap-1.5 rounded-full bg-[#0071e3] px-3.5 text-xs font-medium text-white transition-colors hover:bg-[#0077ed]">
+                  <ExternalLink className="h-3 w-3" /> GitHub
+                </a>
+                <a href="#" className="inline-flex h-8 items-center rounded-full border border-[#d2d2d7] px-3.5 text-xs font-medium text-[#6e6e73] transition-colors hover:border-[#1d1d1f] hover:text-[#1d1d1f]">
+                  Discord
+                </a>
               </div>
             </div>
 
             {/* Quick Links */}
-            <div className="animate-fade-in animation-delay-500 mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
+            <div className="animate-fade-in animation-delay-500 mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
               {[
-                {
-                  title: 'API Docs',
-                  icon: <Code className="h-4 w-4" />,
-                  href: '/api-demo',
-                },
-                {
-                  title: 'Components',
-                  icon: <Layers className="h-4 w-4" />,
-                  href: '/features',
-                },
-                {
-                  title: 'Pricing',
-                  icon: <Zap className="h-4 w-4" />,
-                  href: '/pricing',
-                },
-                {
-                  title: 'About Us',
-                  icon: <Book className="h-4 w-4" />,
-                  href: '/about',
-                },
+                { title: 'API Docs', icon: <Code className="h-3.5 w-3.5" />, href: '/api-demo' },
+                { title: 'Components', icon: <Layers className="h-3.5 w-3.5" />, href: '/features' },
+                { title: 'Pricing', icon: <Zap className="h-3.5 w-3.5" />, href: '/pricing' },
+                { title: 'About Us', icon: <Book className="h-3.5 w-3.5" />, href: '/about' },
               ].map((link, index) => (
-                <a
-                  key={index}
-                  href={link.href}
-                  className="group flex items-center gap-3 rounded-xl border border-slate-200/50 bg-white/50 p-4 transition-all hover:border-violet-300 hover:bg-white hover:shadow-md dark:border-slate-800/50 dark:bg-slate-900/50 dark:hover:border-violet-700 dark:hover:bg-slate-900">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-violet-100 text-violet-600 transition-colors group-hover:bg-violet-500 group-hover:text-white dark:bg-violet-900/30 dark:text-violet-400">
+                <a key={index} href={link.href} className="group flex items-center gap-2.5 rounded-xl bg-[#f5f5f7] p-3 transition-all duration-200 hover:bg-[#e8e8ed]">
+                  <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-white text-[#1d1d1f] shadow-sm transition-colors group-hover:text-[#0071e3]">
                     {link.icon}
                   </span>
-                  <span className="text-sm font-medium text-slate-700 transition-colors group-hover:text-violet-600 dark:text-slate-300 dark:group-hover:text-violet-400">
-                    {link.title}
-                  </span>
+                  <span className="text-xs font-medium text-[#6e6e73] transition-colors group-hover:text-[#1d1d1f]">{link.title}</span>
                 </a>
               ))}
             </div>

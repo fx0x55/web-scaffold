@@ -2,9 +2,8 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Sparkles, Menu, X } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
-import { Button } from '@/components/ui/button'
 
 const navItems: {
   href: '/' | '/features' | '/pricing' | '/api-demo' | '/docs' | '/about'
@@ -23,80 +22,80 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-slate-200/50 bg-white/80 backdrop-blur-xl dark:border-slate-800/50 dark:bg-slate-950/80">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+    <nav className="sticky top-0 z-50 w-full border-b border-black/[0.06] bg-white/80 backdrop-blur-xl">
+      <div className="mx-auto max-w-[980px] px-6">
+        <div className="flex h-12 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="group flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 shadow-lg shadow-violet-500/25 transition-transform duration-300 group-hover:scale-110">
-              <Sparkles className="h-4 w-4 text-white" />
+          <Link href="/" className="flex items-center gap-2">
+            <div className="flex h-6 w-6 items-center justify-center rounded-md bg-[#1d1d1f]">
+              <span className="text-[10px] font-bold text-white">S</span>
             </div>
-            <span className="text-lg font-bold text-slate-900 dark:text-white">
+            <span className="text-sm font-semibold tracking-tight text-[#1d1d1f]">
               Scaffold
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:gap-1">
+          <div className="hidden items-center gap-1 md:flex">
             {navItems.map(item => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative px-4 py-2 text-sm font-medium transition-colors ${
+                className={`rounded-full px-3.5 py-1.5 text-xs font-medium transition-colors duration-200 ${
                   pathname === item.href
-                    ? 'text-violet-600 dark:text-violet-400'
-                    : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
+                    ? 'bg-[#1d1d1f] text-white'
+                    : 'text-[#6e6e73] hover:text-[#1d1d1f]'
                 }`}>
                 {item.label}
-                {pathname === item.href && (
-                  <span className="absolute bottom-0 left-1/2 h-0.5 w-4 -translate-x-1/2 rounded-full bg-violet-500" />
-                )}
               </Link>
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:flex md:items-center md:gap-4">
-            <Button
-              size="sm"
-              className="rounded-lg bg-gradient-to-r from-violet-600 to-fuchsia-600 font-medium text-white hover:from-violet-700 hover:to-fuchsia-700">
+          {/* CTA + Mobile */}
+          <div className="flex items-center gap-3">
+            <Link
+              href="/features"
+              className="hidden rounded-full bg-[#0071e3] px-4 py-1.5 text-xs font-medium text-white transition-colors duration-200 hover:bg-[#0077ed] md:inline-flex">
               Get Started
-            </Button>
-          </div>
+            </Link>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 md:hidden dark:border-slate-800">
-            {mobileMenuOpen ? (
-              <X className="h-4 w-4 text-slate-600 dark:text-slate-400" />
-            ) : (
-              <Menu className="h-4 w-4 text-slate-600 dark:text-slate-400" />
-            )}
-          </button>
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="flex h-8 w-8 items-center justify-center rounded-md text-[#6e6e73] transition-colors hover:text-[#1d1d1f] md:hidden">
+              {mobileMenuOpen ? (
+                <X className="h-4 w-4" />
+              ) : (
+                <Menu className="h-4 w-4" />
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="border-t border-slate-200/50 py-4 md:hidden dark:border-slate-800/50">
-            <div className="flex flex-col gap-1">
+          <div className="animate-slide-down border-t border-black/[0.06] py-3 md:hidden">
+            <div className="flex flex-col gap-0.5">
               {navItems.map(item => (
                 <Link
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`rounded-lg px-4 py-3 text-sm font-medium transition-colors ${
+                  className={`rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
                     pathname === item.href
-                      ? 'bg-violet-50 text-violet-600 dark:bg-violet-900/20 dark:text-violet-400'
-                      : 'text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800/50'
+                      ? 'bg-[#f5f5f7] text-[#1d1d1f]'
+                      : 'text-[#6e6e73] hover:bg-[#f5f5f7] hover:text-[#1d1d1f]'
                   }`}>
                   {item.label}
                 </Link>
               ))}
-              <div className="mt-2 px-4">
-                <Button className="w-full rounded-lg bg-gradient-to-r from-violet-600 to-fuchsia-600 font-medium text-white">
+              <div className="mt-2 border-t border-black/[0.06] pt-3">
+                <Link
+                  href="/features"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block rounded-full bg-[#0071e3] px-4 py-2.5 text-center text-sm font-medium text-white">
                   Get Started
-                </Button>
+                </Link>
               </div>
             </div>
           </div>
