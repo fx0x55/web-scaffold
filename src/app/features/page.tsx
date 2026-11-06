@@ -71,7 +71,11 @@ const stats = [
   { value: '50+', label: 'UI Components' },
 ]
 
-function useCountUp(end: number, duration: number = 2000, start: boolean = true) {
+function useCountUp(
+  end: number,
+  duration: number = 2000,
+  start: boolean = true
+) {
   const [count, setCount] = useState(0)
   const countRef = useRef(0)
   const startTimeRef = useRef<number | null>(null)
@@ -93,13 +97,26 @@ function useCountUp(end: number, duration: number = 2000, start: boolean = true)
   return count
 }
 
-function StatItem({ value, label, index }: { value: string; label: string; index: number }) {
+function StatItem({
+  value,
+  label,
+  index,
+}: {
+  value: string
+  label: string
+  index: number
+}) {
   const [isVisible, setIsVisible] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setIsVisible(true); observer.disconnect() } },
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          observer.disconnect()
+        }
+      },
       { threshold: 0.5 }
     )
     if (ref.current) observer.observe(ref.current)
@@ -115,7 +132,10 @@ function StatItem({ value, label, index }: { value: string; label: string; index
     : `0${suffix}`
 
   return (
-    <div ref={ref} className="text-center" style={{ animationDelay: `${index * 80}ms` }}>
+    <div
+      ref={ref}
+      className="text-center"
+      style={{ animationDelay: `${index * 80}ms` }}>
       <div className="text-3xl font-semibold tracking-tight text-[#1d1d1f] sm:text-4xl">
         {displayValue}
       </div>
@@ -139,7 +159,8 @@ export default function FeaturesPage() {
             <span className="block text-[#6e6e73]">Modern Development</span>
           </h1>
           <p className="animate-slide-up animation-delay-200 mx-auto mt-5 max-w-md text-base text-[#6e6e73]">
-            Everything you need to build modern web applications, from development to deployment.
+            Everything you need to build modern web applications, from
+            development to deployment.
           </p>
         </div>
       </div>
@@ -155,8 +176,12 @@ export default function FeaturesPage() {
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-[#1d1d1f] shadow-sm transition-colors duration-300 group-hover:text-[#0071e3]">
                 {feature.icon}
               </div>
-              <h3 className="mt-4 text-sm font-semibold text-[#1d1d1f]">{feature.title}</h3>
-              <p className="mt-1.5 text-[13px] leading-relaxed text-[#6e6e73]">{feature.description}</p>
+              <h3 className="mt-4 text-sm font-semibold text-[#1d1d1f]">
+                {feature.title}
+              </h3>
+              <p className="mt-1.5 text-[13px] leading-relaxed text-[#6e6e73]">
+                {feature.description}
+              </p>
             </div>
           ))}
         </div>
@@ -167,7 +192,12 @@ export default function FeaturesPage() {
         <div className="mx-auto max-w-[980px] px-6">
           <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
             {stats.map((stat, index) => (
-              <StatItem key={index} value={stat.value} label={stat.label} index={index} />
+              <StatItem
+                key={index}
+                value={stat.value}
+                label={stat.label}
+                index={index}
+              />
             ))}
           </div>
         </div>
@@ -176,8 +206,12 @@ export default function FeaturesPage() {
       {/* CTA */}
       <div className="mx-auto max-w-[980px] px-6 py-24">
         <div className="animate-scale-in text-center">
-          <h2 className="text-2xl font-semibold tracking-tight text-[#1d1d1f] sm:text-3xl">Ready to Get Started?</h2>
-          <p className="mx-auto mt-3 max-w-md text-[#6e6e73]">Experience the development efficiency boost with Scaffold</p>
+          <h2 className="text-2xl font-semibold tracking-tight text-[#1d1d1f] sm:text-3xl">
+            Ready to Get Started?
+          </h2>
+          <p className="mx-auto mt-3 max-w-md text-[#6e6e73]">
+            Experience the development efficiency boost with Scaffold
+          </p>
           <div className="mt-8">
             <a
               href="/pricing"

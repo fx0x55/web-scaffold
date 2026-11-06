@@ -15,7 +15,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'Scaffold — Build Faster',
-  description: 'Modern web scaffold with Next.js 16, Tailwind CSS v4, and shadcn/ui',
+  description:
+    'Modern web scaffold with Next.js 16, Tailwind CSS v4, and shadcn/ui',
 }
 
 export default function RootLayout({

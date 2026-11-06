@@ -129,7 +129,8 @@ export default function ApiDemoPage() {
         {/* Configuration Section */}
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
           {/* API Configuration Card */}
-          <div className="animate-scale-in rounded-2xl bg-[#f5f5f7] p-5"
+          <div
+            className="animate-scale-in rounded-2xl bg-[#f5f5f7] p-5"
             style={{ animationDelay: '150ms' }}>
             <div className="mb-5 flex items-center gap-2.5">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white text-[#1d1d1f] shadow-sm">
@@ -220,7 +221,9 @@ export default function ApiDemoPage() {
                   ))}
                 </div>
                 <p className="mt-1.5 text-[11px] leading-relaxed text-[#86868b]">
-                  <code>omit</code>: No cookies · <code>same-origin</code>: Same-origin cookies · <code>include</code>: Cross-origin cookies
+                  <code>omit</code>: No cookies · <code>same-origin</code>:
+                  Same-origin cookies · <code>include</code>: Cross-origin
+                  cookies
                 </p>
               </div>
 
@@ -244,7 +247,8 @@ export default function ApiDemoPage() {
           </div>
 
           {/* Example APIs Card */}
-          <div className="animate-scale-in rounded-2xl bg-[#f5f5f7] p-5"
+          <div
+            className="animate-scale-in rounded-2xl bg-[#f5f5f7] p-5"
             style={{ animationDelay: '220ms' }}>
             <div className="mb-5 flex items-center gap-2.5">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white text-[#1d1d1f] shadow-sm">
@@ -330,7 +334,8 @@ export default function ApiDemoPage() {
                 className="h-9 rounded-full border-[#d2d2d7] bg-white font-mono text-sm focus:border-[#0071e3] focus:ring-2 focus:ring-[#0071e3]/10"
               />
               <p className="mt-1.5 text-[11px] text-[#86868b]">
-                Try: /get, /post, /headers (HTTPBin) or /posts, /users (JSONPlaceholder)
+                Try: /get, /post, /headers (HTTPBin) or /posts, /users
+                (JSONPlaceholder)
               </p>
             </div>
 
@@ -366,9 +371,7 @@ export default function ApiDemoPage() {
                 code: `apiClient.setBaseUrl('https://api.example.com')\nconst data = await apiClient.get('/posts')`,
               },
             ].map((step, index) => (
-              <div
-                key={index}
-                className="rounded-xl bg-white p-4 shadow-sm">
+              <div key={index} className="rounded-xl bg-white p-4 shadow-sm">
                 <div className="mb-2 flex items-center gap-2">
                   <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#1d1d1f] text-[10px] font-bold text-white">
                     {index + 1}
@@ -394,15 +397,24 @@ export default function ApiDemoPage() {
             <ul className="space-y-1 text-xs text-[#6e6e73]">
               <li className="flex items-start gap-1.5">
                 <ChevronRight className="mt-0.5 h-3 w-3 shrink-0 text-[#d2d2d7]" />
-                <span><code className="rounded bg-[#f5f5f7] px-1">omit</code> - Never send cookies (most permissive)</span>
+                <span>
+                  <code className="rounded bg-[#f5f5f7] px-1">omit</code> -
+                  Never send cookies (most permissive)
+                </span>
               </li>
               <li className="flex items-start gap-1.5">
                 <ChevronRight className="mt-0.5 h-3 w-3 shrink-0 text-[#d2d2d7]" />
-                <span><code className="rounded bg-[#f5f5f7] px-1">same-origin</code> - Only same-origin cookies (default)</span>
+                <span>
+                  <code className="rounded bg-[#f5f5f7] px-1">same-origin</code>{' '}
+                  - Only same-origin cookies (default)
+                </span>
               </li>
               <li className="flex items-start gap-1.5">
                 <ChevronRight className="mt-0.5 h-3 w-3 shrink-0 text-[#d2d2d7]" />
-                <span><code className="rounded bg-[#f5f5f7] px-1">include</code> - Always send cookies (requires server support)</span>
+                <span>
+                  <code className="rounded bg-[#f5f5f7] px-1">include</code> -
+                  Always send cookies (requires server support)
+                </span>
               </li>
             </ul>
           </div>

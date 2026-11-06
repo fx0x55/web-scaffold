@@ -16,10 +16,27 @@ const TwitterIcon = ({ className }: { className?: string }) => (
 )
 
 const values = [
-  { icon: <Target className="h-5 w-5" />, title: 'Pursuit of Excellence', description: 'Every pixel and line of code strives for perfection.' },
-  { icon: <Users className="h-5 w-5" />, title: 'User First', description: 'User-centered design, creating products that solve real problems.' },
-  { icon: <Heart className="h-5 w-5" />, title: 'Driven by Passion', description: 'Passion for technology is our driving force.' },
-  { icon: <Globe className="h-5 w-5" />, title: 'Open & Shared', description: 'Embracing open source and collaboration.' },
+  {
+    icon: <Target className="h-5 w-5" />,
+    title: 'Pursuit of Excellence',
+    description: 'Every pixel and line of code strives for perfection.',
+  },
+  {
+    icon: <Users className="h-5 w-5" />,
+    title: 'User First',
+    description:
+      'User-centered design, creating products that solve real problems.',
+  },
+  {
+    icon: <Heart className="h-5 w-5" />,
+    title: 'Driven by Passion',
+    description: 'Passion for technology is our driving force.',
+  },
+  {
+    icon: <Globe className="h-5 w-5" />,
+    title: 'Open & Shared',
+    description: 'Embracing open source and collaboration.',
+  },
 ]
 
 const team = [
@@ -34,7 +51,12 @@ function useInView(threshold = 0.2) {
   const [isInView, setIsInView] = useState(false)
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setIsInView(true); observer.disconnect() } },
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true)
+          observer.disconnect()
+        }
+      },
       { threshold }
     )
     if (ref.current) observer.observe(ref.current)
@@ -51,20 +73,34 @@ export default function AboutPage() {
       {/* Hero */}
       <div className="mx-auto max-w-[980px] px-6 pt-24 pb-16">
         <div className="text-center">
-          <h1 className="animate-slide-up text-3xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">About Scaffold</h1>
+          <h1 className="animate-slide-up text-3xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl">
+            About Scaffold
+          </h1>
           <p className="animate-slide-up animation-delay-200 mx-auto mt-5 max-w-md text-base text-[#6e6e73]">
-            A passionate team dedicated to making web development simpler, faster, and more enjoyable.
+            A passionate team dedicated to making web development simpler,
+            faster, and more enjoyable.
           </p>
         </div>
       </div>
 
       {/* Mission */}
-      <div ref={missionRef} className="border-y border-[#d2d2d7]/60 bg-[#f5f5f7]/50 py-16">
+      <div
+        ref={missionRef}
+        className="border-y border-[#d2d2d7]/60 bg-[#f5f5f7]/50 py-16">
         <div className="mx-auto max-w-[980px] px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-[11px] font-medium tracking-widest text-[#86868b] uppercase">Our Mission</h2>
-            <p className="mt-4 text-lg leading-relaxed text-[#6e6e73] transition-all duration-700" style={{ opacity: missionInView ? 1 : 0, transform: missionInView ? 'translateY(0)' : 'translateY(12px)' }}>
-              Scaffold was born from a simple idea: developers should focus on creating, not reinventing the wheel. We believe that excellent tools can unleash creativity.
+            <h2 className="text-[11px] font-medium tracking-widest text-[#86868b] uppercase">
+              Our Mission
+            </h2>
+            <p
+              className="mt-4 text-lg leading-relaxed text-[#6e6e73] transition-all duration-700"
+              style={{
+                opacity: missionInView ? 1 : 0,
+                transform: missionInView ? 'translateY(0)' : 'translateY(12px)',
+              }}>
+              Scaffold was born from a simple idea: developers should focus on
+              creating, not reinventing the wheel. We believe that excellent
+              tools can unleash creativity.
             </p>
           </div>
         </div>
@@ -72,7 +108,9 @@ export default function AboutPage() {
 
       {/* Values */}
       <div className="mx-auto max-w-[980px] px-6 py-20">
-        <h2 className="text-center text-[11px] font-medium tracking-widest text-[#86868b] uppercase">Our Values</h2>
+        <h2 className="text-center text-[11px] font-medium tracking-widest text-[#86868b] uppercase">
+          Our Values
+        </h2>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {values.map((value, index) => (
             <ValueCard key={index} value={value} index={index} />
@@ -83,15 +121,24 @@ export default function AboutPage() {
       {/* Team */}
       <div className="border-y border-[#d2d2d7]/60 bg-[#f5f5f7]/50 py-20">
         <div className="mx-auto max-w-[980px] px-6">
-          <h2 className="text-center text-[11px] font-medium tracking-widest text-[#86868b] uppercase">Core Team</h2>
+          <h2 className="text-center text-[11px] font-medium tracking-widest text-[#86868b] uppercase">
+            Core Team
+          </h2>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {team.map((member, index) => (
-              <div key={index} className="animate-scale-in card-hover group rounded-2xl bg-white p-5 text-center shadow-sm" style={{ animationDelay: `${index * 80}ms` }}>
+              <div
+                key={index}
+                className="animate-scale-in card-hover group rounded-2xl bg-white p-5 text-center shadow-sm"
+                style={{ animationDelay: `${index * 80}ms` }}>
                 <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#f5f5f7] text-sm font-semibold text-[#1d1d1f] transition-colors duration-300 group-hover:bg-[#0071e3]/10 group-hover:text-[#0071e3]">
                   {member.initials}
                 </div>
-                <h3 className="mt-3.5 text-sm font-semibold text-[#1d1d1f]">{member.name}</h3>
-                <p className="mt-0.5 text-[13px] text-[#6e6e73]">{member.role}</p>
+                <h3 className="mt-3.5 text-sm font-semibold text-[#1d1d1f]">
+                  {member.name}
+                </h3>
+                <p className="mt-0.5 text-[13px] text-[#6e6e73]">
+                  {member.role}
+                </p>
                 <div className="mt-3 flex items-center justify-center gap-1.5 opacity-0 transition-all duration-300 group-hover:opacity-100">
                   <button className="flex h-7 w-7 items-center justify-center rounded-full text-[#86868b] transition-colors hover:bg-[#f5f5f7] hover:text-[#1d1d1f]">
                     <TwitterIcon className="h-3.5 w-3.5" />
@@ -109,10 +156,16 @@ export default function AboutPage() {
       {/* Contact */}
       <div className="mx-auto max-w-[980px] px-6 py-20">
         <div className="animate-scale-in text-center">
-          <h2 className="text-2xl font-semibold tracking-tight text-[#1d1d1f]">Want to Join Us?</h2>
-          <p className="mx-auto mt-3 max-w-md text-[#6e6e73]">We are always looking for talented people who love technology.</p>
+          <h2 className="text-2xl font-semibold tracking-tight text-[#1d1d1f]">
+            Want to Join Us?
+          </h2>
+          <p className="mx-auto mt-3 max-w-md text-[#6e6e73]">
+            We are always looking for talented people who love technology.
+          </p>
           <div className="mt-8">
-            <a href="mailto:hello@scaffold.dev" className="group inline-flex h-10 items-center gap-2 rounded-full bg-[#0071e3] px-6 text-sm font-medium text-white transition-colors hover:bg-[#0077ed]">
+            <a
+              href="mailto:hello@scaffold.dev"
+              className="group inline-flex h-10 items-center gap-2 rounded-full bg-[#0071e3] px-6 text-sm font-medium text-white transition-colors hover:bg-[#0077ed]">
               <Mail className="h-3.5 w-3.5" /> hello@scaffold.dev
             </a>
           </div>
@@ -120,11 +173,23 @@ export default function AboutPage() {
 
         <div className="animate-fade-in animation-delay-300 mt-12 flex items-center justify-center gap-3">
           {[
-            { icon: <GithubIcon className="h-4 w-4" />, href: '#', label: 'GitHub' },
-            { icon: <TwitterIcon className="h-4 w-4" />, href: '#', label: 'Twitter' },
+            {
+              icon: <GithubIcon className="h-4 w-4" />,
+              href: '#',
+              label: 'GitHub',
+            },
+            {
+              icon: <TwitterIcon className="h-4 w-4" />,
+              href: '#',
+              label: 'Twitter',
+            },
             { icon: <Mail className="h-4 w-4" />, href: '#', label: 'Email' },
           ].map((social, index) => (
-            <a key={index} href={social.href} aria-label={social.label} className="flex h-9 w-9 items-center justify-center rounded-full bg-[#f5f5f7] text-[#6e6e73] transition-all duration-200 hover:bg-[#e8e8ed] hover:text-[#1d1d1f]">
+            <a
+              key={index}
+              href={social.href}
+              aria-label={social.label}
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-[#f5f5f7] text-[#6e6e73] transition-all duration-200 hover:bg-[#e8e8ed] hover:text-[#1d1d1f]">
               {social.icon}
             </a>
           ))}
@@ -138,7 +203,13 @@ export default function AboutPage() {
   )
 }
 
-function ValueCard({ value, index }: { value: (typeof values)[0]; index: number }) {
+function ValueCard({
+  value,
+  index,
+}: {
+  value: (typeof values)[0]
+  index: number
+}) {
   const { ref, isInView } = useInView(0.3)
   return (
     <div
@@ -152,8 +223,12 @@ function ValueCard({ value, index }: { value: (typeof values)[0]; index: number 
       <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-[#1d1d1f] shadow-sm transition-colors duration-300 group-hover:text-[#0071e3]">
         {value.icon}
       </div>
-      <h3 className="mt-4 text-sm font-semibold text-[#1d1d1f]">{value.title}</h3>
-      <p className="mt-1.5 text-[13px] leading-relaxed text-[#6e6e73]">{value.description}</p>
+      <h3 className="mt-4 text-sm font-semibold text-[#1d1d1f]">
+        {value.title}
+      </h3>
+      <p className="mt-1.5 text-[13px] leading-relaxed text-[#6e6e73]">
+        {value.description}
+      </p>
     </div>
   )
 }

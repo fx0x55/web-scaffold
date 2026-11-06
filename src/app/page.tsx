@@ -1,11 +1,5 @@
 import { Button } from '@/components/ui/button'
-import {
-  Zap,
-  Shield,
-  Globe,
-  ArrowRight,
-  CheckSquare,
-} from 'lucide-react'
+import { Zap, Shield, Globe, ArrowRight, CheckSquare } from 'lucide-react'
 import Link from 'next/link'
 
 export default function Home() {
@@ -127,8 +121,7 @@ const features = [
   {
     icon: <CheckSquare className="h-4 w-4" />,
     title: 'Todo Demo',
-    description:
-      'Interactive demo showcasing components, state, and styling.',
+    description: 'Interactive demo showcasing components, state, and styling.',
     href: '/todo' as const,
   },
 ]

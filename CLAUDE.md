@@ -15,8 +15,8 @@ pnpm format   # Format with Prettier
 
 ## Stack
 
-- **Next.js** 16.2 (App Router)
-- **React** 19.2 (React Compiler enabled)
+- **Next.js** 16.4 (App Router)
+- **React** 19.3 (React Compiler enabled)
 - **Tailwind CSS** v4.3 (CSS-based config)
 - **TypeScript** 6 (strict mode)
 - **shadcn/ui** + **lucide-react**
